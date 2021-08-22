@@ -4,12 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@RenderTitleSegments(Site.SiteName, "before")</title>
+  @*
+    Our CSS our custom stylesheet
+    You need to spectify a version of dependent resource it it has a version
+    https://docs.orchardcore.net/en/dev/docs/reference/modules/Resources/#registering-a-resource-manifest
+    Raw file is at ./src/scss/style.scss 
+  *@
+  <style asp-name="replication-faq-theme" at="Head" ></style>
+
   <resources type="Meta" />
-  <!-- INSERT REQUIRED RESOURCES HERE -->
-  <style asp-name="bootstrap" version="4" at="Head"></style>
-  <script asp-name="bootstrap" version="4" at="Foot"></script>
   <resources type="HeadLink" />
-  <resources type="Stylesheet" />
+  <resources type="Stylesheet" /> <!-- Placeholder for style at Head -->
   <resources type="HeadScript" />
 </head>
 <body dir="@Orchard.CultureDir()">

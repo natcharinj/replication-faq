@@ -348,3 +348,9 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Ignore all data in App_Data folder
+App_Data
+
+# Remove generatated CSS/JS
+wwwroot
