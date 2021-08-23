@@ -1,0 +1,5 @@
+# Remove generatated CSS/JS
+wwwroot/*
+
+# Not ignore images folder
+!wwwroot/images
