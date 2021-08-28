@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="@Orchard.CultureName()">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,20 +9,275 @@
     Our CSS our custom stylesheet
     You need to spectify a version of dependent resource it it has a version
     https://docs.orchardcore.net/en/dev/docs/reference/modules/Resources/#registering-a-resource-manifest
-    Raw file is at ./src/scss/style.scss 
+    Raw file is at ./src/scss/style.scss
   *@
-  <style asp-name="replication-faq-theme" at="Head" ></style>
+  <style asp-name="replication-faq-theme" at="Head"></style>
 
   <resources type="Meta" />
   <resources type="HeadLink" />
   <resources type="Stylesheet" /> <!-- Placeholder for style at Head -->
   <resources type="HeadScript" />
 </head>
+
 <body dir="@Orchard.CultureDir()">
-  @await RenderBodyAsync()
-  <footer>
-    @await RenderSectionAsync("Footer", required: false)
-  </footer>
-  <resources type="FootScript" />
+  <div class="main-container">
+    <div class="banner-homepage">
+      <nav class="nav-transparent">
+        <div class="nav-container">
+          <div class="logo">
+            <span><i class="life-ring"></i>Home</span>
+          </div>
+          <div class="nav-bar-mobile" onclick="toggle(this)">
+            <span><i class="bars"></i></span>
+          </div>
+          <div class="nav-items">
+            <div>Distributor</div>
+            <div>Snapshot</div>
+            <div>Transactional</div>
+            <div>Peer to Peer</div>
+            <div>Merge</div>
+            <div>Sync Services</div>
+            <div>Always On</div>
+            <div>Contact</div>
+          </div>
+        </div>
+      </nav>
+      <div class="section-search">
+        <h1 class="header">A FAQ on SQL Server Replication</h1>
+        <p class="text">Your one stop guide to SQL Server Replication</p>
+        <div class="input-group">
+          <input type="search" placeholder="Enter search term here" autocomplete="off" />
+          <span><i class="search"></i></span>
+        </div>
+      </div>
+    </div>
+    <div class="main-content">
+
+      <div class="section-filter">
+        <div class="row">
+          <div class="col-3">
+            <a href="#" class="box">
+              <h3>Configure Distributor</h3>
+            </a>
+          </div>
+          <div class="col-3">
+            <a href="#" class="box">
+              <h3>Snapshot Replication</h3>
+            </a>
+          </div>
+          <div class="col-3">
+            <a href="#" class="box">
+              <h3>Transactional Replication</h3>
+            </a>
+          </div>
+          <div class="col-3">
+            <a href="#" class="box">
+              <h3>Peer to Peer Replication</h3>
+            </a>
+          </div>
+          <div class="col-3">
+            <a href="#" class="box">
+              <h3>Merge Replication</h3>
+            </a>
+          </div>
+          <div class="col-3">
+            <a href="#" class="box">
+              <h3>Sync Services</h3>
+            </a>
+          </div>
+          <div class="col-3">
+            <a href="#" class="box">
+              <h3>Always On</h3>
+            </a>
+          </div>
+          <div class="col-3">
+            <a href="#" class="box">
+              <h3>Troubleshooting</h3>
+            </a>
+          </div>
+          <div class="col-3">
+            <a href="#" class="box">
+              <h3>Contact</h3>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-article">
+        <hr>
+        <div class="row">
+          <div class="col-2">
+            <h3>Popular Articles</h3>
+            <div class="list-article">
+              <div class="link-article">
+                <div>
+                  <a href="#">
+                    Voluptatem accusantium doloremque laudan rem aperiam
+                  </a>
+                </div>
+                <div class="icon">
+                  <a href="#"><i class="chevron-right"></i></a>
+                </div>
+              </div>
+              <div class="link-article">
+                <div>
+                  <a href="#">Sorem do eiusmod tempor incididunt dolore magna aliqua</a>
+                </div>
+                <div class="icon">
+                  <a href="#"><i class="chevron-right"></i></a>
+                </div>
+              </div>
+              <div class="link-article">
+                <div>
+                  <a href="#">Lorem ipsum dolor sit amet elit sed do eiusmod</a>
+                </div>
+                <div class="icon">
+                  <a href="#"><i class="chevron-right"></i></a>
+                </div>
+              </div>
+              <div class="link-article">
+                <div>
+                  <a href="#">Sed ut perspiciatis unde omnis iste natus error sit aperiam</a>
+                </div>
+                <div class="icon">
+                  <a href="#"><i class="chevron-right"></i></a>
+                </div>
+              </div>
+              <div class="link-article">
+                <div>
+                  <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing sed iusmod</a>
+                </div>
+                <div class="icon">
+                  <a href="#"><i class="chevron-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-2">
+            <h3>Recent Articles</h3>
+            <div class="list-article">
+              <div class="link-article">
+                <div>
+                  <a href="#">Lorem ipsum dolor sit ut labore et dolore magna aliqua</a>
+                </div>
+                <div class="icon">
+                  <a href="#"><i class="chevron-right"></i></a>
+                </div>
+              </div>
+              <div class="link-article">
+                <div>
+                  <a href="#">Sed ut perspiciatis unde omnis iste natus err aperiam</a>
+                </div>
+                <div class="icon">
+                  <a href="#"><i class="chevron-right"></i></a>
+                </div>
+              </div>
+              <div class="link-article">
+                <div>
+                  <a href="#">Consectetur adipiscing elit sed do eiusmod</a>
+                </div>
+                <div class="icon">
+                  <a href="#"><i class="chevron-right"></i></a>
+                </div>
+              </div>
+              <div class="link-article">
+                <div>
+                  <a href="#">Donseced do eiusmod tempor incididunt ut labore magna aliqua</a>
+                </div>
+                <div class="icon">
+                  <a href="#"><i class="chevron-right"></i></a>
+                </div>
+              </div>
+              <div class="link-article">
+                <div>
+                  <a href="#">Sed utem accusantium doloremque laudantium totam</a>
+                </div>
+                <div class="icon">
+                  <a href="#"><i class="chevron-right"></i></a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-contact">
+      <div class="contact-content">
+        <h2>Can't find what you're looking for?</h2>
+        <div class="btn-support">
+          <a href="#">Contact Support</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="row">
+        <div class="col-2">
+          <p>Copyright 2017 Powered by Code Love</p>
+        </div>
+        <div class="col-2">
+          <a href="http://www.facebook.com"><span><i class="facebook"></i></span></a>
+          <a href="#"><span><i class="google"></i></span></a>
+          <a href="#"><span><i class="vimeo"></i></span></a>
+          <a href="#"><span><i class="instagram"></i></span></a>
+          <a href="#"><span><i class="twitter"></i></span></a>
+          <a href="#"><span><i class="youtube"></i></span></a>
+        </div>
+      </div>
+    </div>
+    <resources type="FootScript" />
+
+  </div>
+  <div class="nav-menu-mobile" id="nav-menu-mobile">
+    <div class="list-nav-menu-mobile" id="list-nav-menu-mobile">
+      <div class="row">
+        <div class="col-1 logo-mobile">
+          <span><i class="life-ring"></i>Home</span>
+        </div>
+        <div class="col-1">Article</div>
+        <div class="col-1">
+          <div class="sub-menu">
+            <a>Scrollspy</a>
+          </div>
+          <div class="sub-menu">
+            <a>Narrow</a>
+          </div>
+        </div>
+        <div class="col-1">Faq</div>
+        <div class="col-1">Contact</div>
+        <div class="col-1">Components</div>
+      </div>
+      <div class="row">
+        <div class="col-1 text--center btn-support">
+          <a class="">Support</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-1 text--center">
+          <a href="http://www.facebook.com"><span><i class="facebook"></i></span></a>
+          <a href="#"><span><i class="google"></i></span></a>
+          <a href="#"><span><i class="twitter"></i></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('nav-menu-mobile').addEventListener('click', function (event) {
+      console.log("clicked");
+      const ignoreClickOnMeElement = document.getElementById('list-nav-menu-mobile')
+      var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
+      if (!isClickInsideElement) {
+        document.getElementById('nav-menu-mobile').className = 'nav-menu-mobile'
+      }
+    });
+    function toggle() {
+      const navMenu = document.getElementById('nav-menu-mobile')
+      const className = navMenu.className
+      navMenu.className = className == 'nav-menu-mobile' ? 'nav-menu-mobile show' : 'nav-menu-mobile'
+    }
+  </script>
 </body>
+
 </html>
