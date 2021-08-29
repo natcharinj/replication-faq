@@ -425,6 +425,11 @@ nav {
   background-color: #21b4db;
   nav {
     margin-bottom: 0px;
+    .nav-items {
+      div {
+        padding: 0 10px;
+      }
+    }
   }
 }
 .section-sub-nav {
