@@ -443,12 +443,18 @@ nav {
     width: calc(100% - 40px);
     padding: 0px 20px;
   }
-  .row {
-    .col-3 {
-      padding: 0px 15px;
+  .section-filter {
+    .row {
+      .col-3 {
+        padding: 0px 15px;
+      }
     }
-    .col-2 {
-      padding: 0px 20px;
+  }
+  .section-article {
+    .row {
+      .col-2 {
+        padding: 0px 20px;
+      }
     }
   }
 }
@@ -459,13 +465,16 @@ nav {
     }
   }
   .row {
+    justify-content: flex-start;
     .col-3 {
-      width: calc(100% / 4);
+      width: calc(100% / 2 - 30px);
     }
   }
-  .box {
-    h3 {
-      padding: 25px 5px;
+  .section-filter {
+    .box {
+      h3 {
+        padding: 25px 5px;
+      }
     }
   }
 }
@@ -488,9 +497,18 @@ nav {
     }
   }
   .section-contact {
-    .btn-support {
-      a {
-        font-size: 13px;
+    .contact-content {
+      .btn-support {
+        a {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+  .footer {
+    .row {
+      .col-2 {
+        width: 100%;
       }
     }
   }
