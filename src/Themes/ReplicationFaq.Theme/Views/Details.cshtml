@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="@Orchard.CultureName()">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@RenderTitleSegments(Site.SiteName, "before")</title>
+  @*
+    Our CSS our custom stylesheet
+    You need to spectify a version of dependent resource it it has a version
+    https://docs.orchardcore.net/en/dev/docs/reference/modules/Resources/#registering-a-resource-manifest
+    Raw file is at ./src/scss/style.scss
+  *@
+  <style asp-name="replication-faq-theme" at="Head"></style>
+
+  <resources type="Meta" />
+  <resources type="HeadLink" />
+  <resources type="Stylesheet" /> <!-- Placeholder for style at Head -->
+  <resources type="HeadScript" />
+</head>
+
+<body dir="@Orchard.CultureDir()">
+  <div class="main-container">
+    <div class="banner-nav">
+      <nav class="nav-transparent">
+        <div class="nav-container">
+          <div class="logo">
+            <span><i class="life-ring"></i>Home</span>
+          </div>
+          <div class="nav-bar-mobile" onclick="toggle(this)">
+            <span><i class="bars"></i></span>
+          </div>
+          <div class="nav-items">
+            <div>Home</div>
+            <div>Distributor</div>
+            <div>Snapshot</div>
+            <div>Transactional</div>
+            <div>Peer to Peer</div>
+            <div>Merge</div>
+            <div>Sync Services</div>
+            <div>Always On</div>
+            <div>Contact</div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="main-content">
+      <div class="section-sub-nav">
+        <div class="row">
+          <div class="col-2">
+            <span class="breadcrumb"><a>Home</a></span>
+            <span class="breadcrumb"><a>Distributor</a></span>
+            <span class="breadcrumb"><a>Configuring a Local Distributor</a></span>
+          </div>
+          <div class="col-2">
+            <div class="input-group">
+              <input type="search" placeholder="Search" autocomplete="off" />
+              <span><i class="search"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main-page">
+        <div class="table-of-content">
+          <h3 class="title">Table of Contents</h3>
+          <div class="title active">Setup</div>
+          <div class="title">Example Code</div>
+          <div class="title">Advanced Options</div>
+          <div class="title">Content Import</div>
+        </div>
+        <div class="section-page">
+          <h1 class="title">Configuring a Local Distributor</h1>
+          <p class="sub-title"></p>
+          <div class="section-contributor">
+            <div class="profile">
+              <div>
+                <img class="image-circle" width="40" height="40" src="~/ReplicationFaq.Theme/images/joshua.jpg">
+              </div>
+              <div class="detail">
+                <div class="name">Joshua Birdman</div>
+                <div class="time">Created: Sep 06, 2016</div>
+                <div class="time">Updated: Apr 26, 2017</div>
+              </div>
+            </div>
+            <div class="btn-follow">
+              <button type="button">Follow</button>
+            </div>
+          </div>
+          <div class="content-detail">
+            <div class="section-heading">Setup</div>
+            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id mollis elit. In vehicula
+              massa id erat luctus, nec vulputate felis tincidunt. Sed euismod dignissim imperdiet. Fusce a nibh vitae
+              nibh interdum sagittis et congue lorem. Quisque bibendum sem non nulla tempus maximus. Phasellus sed
+              ligula dolor. Fusce posuere, dolor vel rutrum lacinia, purus lectus ultrices dolor, ut efficitur lorem leo
+              in augue. Phasellus at magna a felis vestibulum tempus sit amet iaculis tortor. Mauris condimentum, purus
+              a facilisis gravida, arcu lorem rutrum urna, in dapibus augue urna ut erat. Mauris tincidunt ligula eu
+              blandit lobortis.
+
+              Pellentesque feugiat pellentesque quam, fringilla posuere justo efficitur eu. Nullam nunc est, auctor non
+              justo id, aliquet eleifend lectus. Ut dictum porttitor suscipit. Nulla in libero ac felis porttitor
+              tincidunt vel et felis. Proin viverra volutpat orci quis sollicitudin. Curabitur finibus porttitor orci in
+              bibendum. Duis tincidunt id quam sit amet tempor. Aenean laoreet imperdiet elit a fermentum.
+            </div>
+            <div class="section-heading">Example code</div>
+            <div class="text">
+              <p> &lt;/&gt;</p>
+              SELECT column1, column2, ...
+              FROM table_name;
+              <p> &lt;/&gt;</p>
+            </div>
+            <div class="section-heading"> Advanced Options </div>
+            <div class="text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id mollis elit. In vehicula
+              massa id erat luctus, nec vulputate felis tincidunt. Sed euismod dignissim imperdiet. Fusce a nibh vitae
+              nibh interdum sagittis et congue lorem. Quisque bibendum sem non nulla tempus maximus. Phasellus sed
+              ligula dolor. Fusce posuere, dolor vel rutrum lacinia, purus lectus ultrices dolor, ut efficitur lorem leo
+              in augue. Phasellus at magna a felis vestibulum tempus sit amet iaculis tortor. Mauris condimentum, purus
+              a facilisis gravida, arcu lorem rutrum urna, in dapibus augue urna ut erat. Mauris tincidunt ligula eu
+              blandit lobortis.
+
+              Pellentesque feugiat pellentesque quam, fringilla posuere justo efficitur eu. Nullam nunc est, auctor non
+              justo id, aliquet eleifend lectus. Ut dictum porttitor suscipit. Nulla in libero ac felis porttitor
+              tincidunt vel et felis. Proin viverra volutpat orci quis sollicitudin. Curabitur finibus porttitor orci in
+              bibendum. Duis tincidunt id quam sit amet tempor. Aenean laoreet imperdiet elit a fermentum.
+            </div>
+            <div class="section-heading"> Content Import </div>
+            <div class="text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+              mollit anim id est laborum.
+            </div>
+          </div>
+          <div class="article-votes">
+            <h3>Was this article helpful?</h3>
+            <div class="icon-vote">
+              <div class="icon">
+                <a href="#"><i class="check"></i> Yes</a>
+              </div>
+              <div class="icon">
+                <a href="#"><i class="cross"></i> No</a>
+              </div>
+            </div>
+            <div class="vote-question">
+              Have more questions? <a href="#">Submit a request</a>
+            </div>
+          </div>
+
+          <div class="row article-related">
+            <div class="col-2">
+              <h3>Recently Viewed Articles</h3>
+              <div class="text">
+                <a>Sed ut perspiciatis unde omnis iste laudantium, totam rem aperiam</a>
+              </div>
+              <div class="text">
+                <a>Lorem ipsum dolor sit amet, elabore et dolore magna aliqua</a>
+              </div>
+              <div class="text">
+                <a>Dolor sit amet, consectetur adipiscing elit, sed do eiusmod</a>
+              </div>
+            </div>
+            <div class="col-2">
+              <h3>Related Articles</h3>
+              <div class="text">
+                <a>Apsum dolor sit amet, consectet tempor incididunt ut dolore magna aliqua</a>
+              </div>
+              <div class="text">
+                <a>Hadem sit amet, consectetur adipiscing elit, sed do eiusmod</a>
+              </div>
+              <div class="text">
+                <a>Lorem ipsum dolor tempor incididunt ut labore et dolore magna aliqua</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-comment">
+            <h3>Comments</h3>
+            <div class="main-comment">
+              <div class="header-commentator">
+                <div class="profile">
+                  <div>
+                    <img class="image-circle" width="70" height="70" src="~/ReplicationFaq.Theme/images/ashley.jpg">
+                  </div>
+                  <div class="detail">
+                    <div class="name">Ashley Winslow</div>
+                    <div class="time">12 days ago</div>
+                  </div>
+                </div>
+                <div class="btn-reply">
+                  <button type="button">Reply</button>
+                </div>
+              </div>
+              <div class="comment">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              </div>
+            </div>
+
+            <div class="sub-comment">
+              <div class="header-commentator">
+                <div class="profile">
+                  <div>
+                    <img class="image-circle" width="70" height="70" src="~/ReplicationFaq.Theme/images/joshua.jpg">
+                  </div>
+                  <div class="detail">
+                    <div class="name">Joshua Birdman</div>
+                    <div class="time">12 days ago</div>
+                  </div>
+                </div>
+                <div class="btn-reply">
+                  <button type="button">Reply</button>
+                </div>
+              </div>
+              <div class="comment">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              </div>
+            </div>
+
+            <div class="sub-comment">
+              <div class="header-commentator">
+                <div class="profile">
+                  <div>
+                    <img class="image-circle" width="70" height="70" src="~/ReplicationFaq.Theme/images/ashley.jpg">
+                  </div>
+                  <div class="detail">
+                    <div class="name">Ashley Winslow</div>
+                    <div class="time">12 days ago</div>
+                  </div>
+                </div>
+                <div class="btn-reply">
+                  <button type="button">Reply</button>
+                </div>
+              </div>
+              <div class="comment">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              </div>
+            </div>
+
+          </div>
+
+          <div class="section-form-comment">
+            <h3>Leave a Comment</h3>
+            <div class="row">
+              <div class="col-2">
+                <input type="text" name="name" placeholder="Name">
+              </div>
+              <div class="col-2">
+                <input type="email" name="name" placeholder="Email">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-1">
+                <textarea rows="5" placeholder="Comment"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <button type="button" class="btn-submit">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="row">
+        <div class="col-2">
+          <p>Copyright 2017 Powered by Code Love</p>
+        </div>
+        <div class="col-2">
+          <a href="http://www.facebook.com"><span><i class="facebook"></i></span></a>
+          <a href="#"><span><i class="google"></i></span></a>
+          <a href="#"><span><i class="vimeo"></i></span></a>
+          <a href="#"><span><i class="instagram"></i></span></a>
+          <a href="#"><span><i class="twitter"></i></span></a>
+          <a href="#"><span><i class="youtube"></i></span></a>
+        </div>
+      </div>
+    </div>
+    <resources type="FootScript" />
+
+  </div>
+  <div class="nav-menu-mobile" id="nav-menu-mobile">
+    <div class="list-nav-menu-mobile" id="list-nav-menu-mobile">
+      <div class="row">
+        <div class="col-1 logo-mobile">
+          <span><i class="life-ring"></i>Home</span>
+        </div>
+        <div class="col-1">Article</div>
+        <div class="col-1">
+          <div class="sub-menu">
+            <a>Scrollspy</a>
+          </div>
+          <div class="sub-menu">
+            <a>Narrow</a>
+          </div>
+        </div>
+        <div class="col-1">Faq</div>
+        <div class="col-1">Contact</div>
+        <div class="col-1">Components</div>
+      </div>
+      <div class="row">
+        <div class="col-1 text--center btn-support">
+          <a class="">Support</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-1 text--center">
+          <a href="http://www.facebook.com"><span><i class="facebook"></i></span></a>
+          <a href="#"><span><i class="google"></i></span></a>
+          <a href="#"><span><i class="twitter"></i></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('nav-menu-mobile').addEventListener('click', function (event) {
+      console.log("clicked");
+      const ignoreClickOnMeElement = document.getElementById('list-nav-menu-mobile')
+      var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
+      if (!isClickInsideElement) {
+        document.getElementById('nav-menu-mobile').className = 'nav-menu-mobile'
+      }
+    });
+    function toggle() {
+      const navMenu = document.getElementById('nav-menu-mobile')
+      const className = navMenu.className
+      navMenu.className = className == 'nav-menu-mobile' ? 'nav-menu-mobile show' : 'nav-menu-mobile'
+    }
+  </script>
+</body>
+
+</html>
