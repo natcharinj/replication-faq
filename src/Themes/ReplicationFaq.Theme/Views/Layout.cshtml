@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@RenderTitleSegments(Site.SiteName, "before")</title>
   @*
-    Our CSS our custom stylesheet
-    You need to spectify a version of dependent resource it it has a version
-    https://docs.orchardcore.net/en/dev/docs/reference/modules/Resources/#registering-a-resource-manifest
-    Raw file is at ./src/scss/style.scss
+      Our CSS our custom stylesheet
+      You need to spectify a version of dependent resource it it has a version
+      https://docs.orchardcore.net/en/dev/docs/reference/modules/Resources/#registering-a-resource-manifest
+      Raw file is at ./src/scss/style.scss
   *@
   <style asp-name="replication-faq-theme" at="Head"></style>
 
@@ -20,6 +20,8 @@
 </head>
 
 <body dir="@Orchard.CultureDir()">
+
+
   <div class="main-container">
     <div class="banner-homepage">
       <nav class="nav-transparent">
@@ -30,6 +32,14 @@
           <div class="nav-bar-mobile" onclick="toggle(this)">
             <span><i class="bars"></i></span>
           </div>
+         @* <menu alias="alias:main-menu" cache-id="main-menu" cache-fixed-duration="00:05:00" cache-tag="alias:main-menu" /> *@
+
+        @* Main navigation menu, TODO add supporting cache *@
+        @{
+          var routeData = new RouteData(new RouteValueDictionary());
+        }
+        @await DisplayAsync(await New.Navigation(MenuName: "breadcrumbs", RouteData: routeData))
+
           <div class="nav-items">
             <div>Distributor</div>
             <div>Snapshot</div>

@@ -1,0 +1,15 @@
+@{
+  var model = Model as Shape;
+  var isActiveItem = model.Classes.Contains("-active");
+  var caption = Model.Text;
+}
+
+<!-- Breadcrumbs  -->
+@if (isActiveItem)
+{
+  <span>@caption</span>
+}
+else
+{
+  <a href="@(Model.Url ?? "#")">@caption</a>
+}

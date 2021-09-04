@@ -1,0 +1,40 @@
+@{
+  TagBuilder tag = Tag(Model, "ul");
+  tag.AddCssClass("breadcrumbs-navigation");
+  foreach (var navigationItem in Model)
+  {
+    tag.InnerHtml.AppendHtml(await DisplayAsync(navigationItem));
+  }
+}
+
+@* https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook/Breadcrumb_Navigation *@
+<nav>
+  @tag
+</nav>
+
+@*
+breadcrumbs-navigation
+item
+-active
+
+<nav aria-label="Breadcrumb" class="breadcrumb">
+  <ul>
+    <li><a href="">Home</a></li>
+    <li><a href="">Category</a></li>
+    <li><a href="">Sub-Category</a></li>
+    <li><span aria-current="page">Product</span></li>
+  </ul>
+</nav>
+
+.breadcrumb ul {
+    display: flex;
+}
+    
+.breadcrumb li::before {
+    content: "/";
+}
+    
+.breadcrumb li:first-child::before {
+    content: "";
+}
+*@

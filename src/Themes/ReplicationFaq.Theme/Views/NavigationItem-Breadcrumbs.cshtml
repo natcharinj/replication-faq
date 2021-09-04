@@ -1,0 +1,11 @@
+@{
+  TagBuilder tag = Tag(Model, "li");
+  tag.AddCssClass("item");
+
+  // Morphing the shape to keep Model untouched
+  // Support only one level no nested menu item
+  Model.Metadata.Alternates.Clear();
+  Model.Metadata.Type = "NavigationItemLink";
+  tag.InnerHtml.AppendHtml(await DisplayAsync(Model));
+}
+@tag
