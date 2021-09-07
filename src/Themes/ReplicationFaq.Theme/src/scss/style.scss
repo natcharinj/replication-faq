@@ -2,6 +2,7 @@ $font: "Open Sans", sans-serif;
 $primary-color: #425869;
 $urlImage: "/ReplicationFaq.Theme/images";
 $urlFont: "/ReplicationFaq.Theme/fonts";
+@import "./navigation.scss";
 %flex-shared {
   display: flex;
   flex-wrap: wrap;
@@ -89,6 +90,9 @@ body {
   max-width: 1060px;
   width: 100%;
   margin: 0px auto;
+}
+a {
+  color: inherit;
 }
 i {
   -webkit-mask-size: contain;
@@ -221,7 +225,7 @@ i.cross {
     }
   }
 }
-nav {
+.nav {
   @extend %flex-shared;
   color: #fffffff2;
   width: 100%;
@@ -431,7 +435,7 @@ nav {
 }
 .banner-nav {
   background-color: #21b4db;
-  nav {
+  .nav {
     margin-bottom: 0px;
     .nav-items {
       div {
@@ -914,7 +918,7 @@ input[type="search"]::-webkit-search-results-decoration {
   }
 }
 @media screen and (max-width: 1000px) {
-  nav {
+  .nav {
     .nav-container {
       .nav-items {
         display: none;
@@ -926,7 +930,7 @@ input[type="search"]::-webkit-search-results-decoration {
   }
 }
 @media screen and (max-width: 1024px) {
-  nav {
+  .nav {
     width: calc(100% - 40px);
     padding: 0px 20px;
   }
