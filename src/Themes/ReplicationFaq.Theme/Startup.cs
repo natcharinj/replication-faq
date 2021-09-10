@@ -3,6 +3,7 @@ using OrchardCore.Modules;
 using Microsoft.Extensions.Options;
 using OrchardCore.ResourceManagement;
 using OrchardCore.Navigation;
+using OrchardCore.Data.Migration;
 
 namespace ReplicationFaq.Theme
 {
@@ -12,6 +13,8 @@ namespace ReplicationFaq.Theme
         {
             services.AddScoped<INavigationProvider, BreadcrumbsMenu>();
             services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
+            services.AddScoped<IDataMigration, Migrations>();
+
         }
     }
 }

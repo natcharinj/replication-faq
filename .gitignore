@@ -354,3 +354,4 @@ App_Data
 
 # Remove generatated CSS/JS
 wwwroot/*
+is-cache
