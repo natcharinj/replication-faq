@@ -1,6 +1,6 @@
 @{
   TagBuilder tag = Tag(Model, "ul");
-  tag.AddCssClass("breadcrumbs-navigation");
+  tag.AddCssClass("breadcrumbs-navigation -center");
   foreach (var navigationItem in Model)
   {
     tag.InnerHtml.AppendHtml(await DisplayAsync(navigationItem));
@@ -8,7 +8,7 @@
 }
 
 @* https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook/Breadcrumb_Navigation *@
-<nav>
+<nav class="sub-nav">
   @tag
 </nav>
 
