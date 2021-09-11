@@ -1,6 +1,6 @@
 @{
   TagBuilder tag = Tag(Model, "ul");
-  tag.AddCssClass("breadcrumbs-navigation -shiftcenter");
+  tag.AddCssClass("breadcrumbs-navigation -center");
   foreach (var navigationItem in Model)
   {
     tag.InnerHtml.AppendHtml(await DisplayAsync(navigationItem));

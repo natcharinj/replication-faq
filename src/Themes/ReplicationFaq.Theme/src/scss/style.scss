@@ -191,6 +191,7 @@ i.cross {
       text-align: left;
       .col-1 {
         margin-bottom: 15px;
+        cursor: pointer;
         &.text--center {
           text-align: center;
           a {
@@ -225,7 +226,7 @@ i.cross {
     }
   }
 }
-.nav {
+.nav-main {
   @extend %flex-shared;
   color: #fffffff2;
   width: 100%;
@@ -233,7 +234,6 @@ i.cross {
   line-height: 1.7333;
   text-transform: uppercase;
   height: 80px;
-  margin-bottom: 20px;
   letter-spacing: 0.05rem;
   .nav-container {
     @extend %flex-shared;
@@ -435,7 +435,7 @@ i.cross {
 }
 .banner-nav {
   background-color: #21b4db;
-  .nav {
+  .nav-menu {
     margin-bottom: 0px;
     .nav-items {
       div {
@@ -912,27 +912,24 @@ input[type="search"]::-webkit-search-results-decoration {
     max-width: 100%;
   }
 }
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1024px) {
   .nav-menu-mobile {
     display: none;
   }
 }
-@media screen and (max-width: 1000px) {
-  .nav {
+@media screen and (max-width: 1024px) {
+  .nav-main {
+    width: calc(100% - 40px);
+    padding: 0px 20px;
     .nav-container {
       .nav-items {
         display: none;
       }
       .nav-bar-mobile {
         display: flex;
+        cursor: pointer;
       }
     }
-  }
-}
-@media screen and (max-width: 1024px) {
-  .nav {
-    width: calc(100% - 40px);
-    padding: 0px 20px;
   }
   .section-filter {
     .row {
