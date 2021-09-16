@@ -1,0 +1,29 @@
+.block-list {
+  $widget-item-gap: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: $widget-item-gap 0;
+  gap: $widget-item-gap;
+
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+    .block-list-item {
+      flex-basis: calc(50% - #{$widget-item-gap} / 2);
+    }
+  }
+}
+
+.block-list-item {
+  height: 70px;
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #ccc 1px solid;
+  position: relative;
+
+  @media (min-width: 768px) {
+    height: 100px;
+  }
+}

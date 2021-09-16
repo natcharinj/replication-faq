@@ -2,7 +2,10 @@ $font: "Open Sans", sans-serif;
 $primary-color: #425869;
 $urlImage: "/ReplicationFaq.Theme/images";
 $urlFont: "/ReplicationFaq.Theme/fonts";
-@import "./navigation.scss";
+
+@import './navigation.scss';
+@import './block-list.scss';
+
 %flex-shared {
   display: flex;
   flex-wrap: wrap;

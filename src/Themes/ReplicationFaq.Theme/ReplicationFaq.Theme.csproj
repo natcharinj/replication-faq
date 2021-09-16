@@ -20,6 +20,7 @@
     <PackageReference Include="OrchardCore.Layers" Version="1.0.0" />
     <PackageReference Include="OrchardCore.Title" Version="1.0.0" />
     <PackageReference Include="OrchardCore.Alias" Version="1.0.0" />
+    <PackageReference Include="OrchardCore.Html" Version="1.0.0" />
 
 
   </ItemGroup>

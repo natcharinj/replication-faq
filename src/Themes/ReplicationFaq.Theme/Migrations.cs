@@ -15,10 +15,14 @@ using Microsoft.AspNetCore.Mvc.Localization;
 using System.Threading.Tasks;
 using OrchardCore.Menu.Models;
 using OrchardCore.Title.Models;
-using OrchardCore.Alias.Models;
 using YesSql;
 using System.Linq;
 using System.Text.RegularExpressions;
+using OrchardCore.ContentManagement.Metadata;
+using OrchardCore.Layers.Models;
+using OrchardCore.ContentManagement.Metadata.Settings;
+using OrchardCore.Html.Models;
+using ReplicationFaq.Theme.Models;
 
 namespace ReplicationFaq.Theme
 {
@@ -32,6 +36,7 @@ namespace ReplicationFaq.Theme
         private readonly INotifier _notifier;
         private readonly IHtmlLocalizer<Migrations> H;
         private static readonly Regex pattern = new Regex(@"\s+", RegexOptions.Compiled);
+        private readonly IContentDefinitionManager _contentDefinitionManager;
 
         public Migrations(
             INotifier notifier,
@@ -39,7 +44,8 @@ namespace ReplicationFaq.Theme
             IConditionIdGenerator conditionIdGenerator,
             IContentManager contentManager,
             IContentHandleManager contentHandleManager,
-            ISession session
+            ISession session,
+            IContentDefinitionManager contentDefinitionManager
         )
         {
             _contentManager = contentManager;
@@ -48,11 +54,14 @@ namespace ReplicationFaq.Theme
             _notifier = notifier;
             H = localizer;
             _conditionIdGenerator = conditionIdGenerator;
+            _contentDefinitionManager = contentDefinitionManager;
         }
 
         public async Task<int> CreateAsync()
         {
             await CreateMenuAsync();
+            CreateBlockListPart();
+            await CreateBlockListWidgetAsync();
             return 1;
         }
 
@@ -134,6 +143,46 @@ namespace ReplicationFaq.Theme
             var url = pattern.Replace(displayText.Trim(), "-").ToLower();
             contactUsMenuItem.Alter<LinkMenuItemPart>(p => p.Url = $"~/{url}");
             return contactUsMenuItem;
+        }
+
+        private void CreateBlockListPart()
+        {
+            _contentDefinitionManager.AlterPartDefinition(
+                nameof(BlockListPart),
+                part => part
+                    .Attachable(true)
+                    .WithDescription("Provide a block list part for a content item.")
+            );
+        }
+
+
+        private async Task CreateBlockListWidgetAsync()
+        {
+            const string widgetName = "BlockListWidget";
+            _contentDefinitionManager.AlterTypeDefinition(
+                widgetName,
+                type => type
+                    .WithPart(nameof(BlockListPart))
+                    .Stereotype("Widget")
+            );
+
+            // Create a new content item, not save to database yet.
+            var contentItem = await _contentManager.NewAsync(widgetName);
+            contentItem.DisplayText = widgetName;
+            contentItem.Alter<BlockListPart>(p => p.Names = new[] { "test" });
+
+            //var layerMetaData = contentItem.As<LayerMetadata>();
+            var layerMetaData = new LayerMetadata()
+            {
+                RenderTitle = false,
+                Zone = "Content",
+                Layer = "Homepage",
+                Position = 1.0
+            };
+
+            // Attach Layer Meta data to a widget content item.
+            contentItem.Weld(layerMetaData);
+            await _contentManager.CreateAsync(contentItem, VersionOptions.Published);
         }
     }
 }
