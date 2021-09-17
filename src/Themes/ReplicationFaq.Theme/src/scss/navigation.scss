@@ -62,9 +62,18 @@
 
 @media screen and (max-width: 1024px) {
   .sub-nav {
+
     > .breadcrumbs-navigation {
       width: calc(100% - 40px);
       padding: 0px 20px;
+    }
+  }
+  .main-menu {
+
+    > .item {
+      height: 40px;
+      justify-content: flex-start;
+      width: 100%;
     }
   }
 }
