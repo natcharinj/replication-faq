@@ -169,7 +169,8 @@ namespace ReplicationFaq.Theme
             // Create a new content item, not save to database yet.
             var contentItem = await _contentManager.NewAsync(widgetName);
             contentItem.DisplayText = widgetName;
-            contentItem.Alter<BlockListPart>(p => p.Names = new[] { "test" });
+            contentItem.Weld<BlockListPart>(new BlockListPart());
+            //contentItem.Alter<BlockListPart>(p => p.Names = new[] { "test" });
 
             //var layerMetaData = contentItem.As<LayerMetadata>();
             var layerMetaData = new LayerMetadata()
