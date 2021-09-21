@@ -11,12 +11,24 @@
     https://docs.orchardcore.net/en/dev/docs/reference/modules/Resources/#registering-a-resource-manifest
     Raw file is at ./src/scss/style.scss
   *@
+  <!-- Google fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link
+    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+
+
+  <style asp-name="font-awesome" version="5" at="Head" ></style>
+  <style asp-name="bootstrap" at="Head"></style>
+  <!-- You need spectify a version of dependent resource it it has a version -->
   <style asp-name="replication-faq-theme" at="Head"></style>
+  <script asp-name="bootstrap" at="Foot"></script>
 
   <resources type="Meta" />
   <resources type="HeadLink" />
-  <resources type="Stylesheet" /> <!-- Placeholder for style at Head -->
-  <resources type="HeadScript" />
+  <resources type="Stylesheet" /> <!-- Placeholder for a style file at Head -->
+  <resources type="HeadScript" /> <!-- Placeholder for a script file at Head -->
 </head>
 
 <body dir="@Orchard.CultureDir()">
@@ -29,7 +41,8 @@
           </div>
           <div class="nav-items">
             @* Main menu *@
-            <menu alias="alias:main-menu" cache-id="main-menu" cache-fixed-duration="00:05:00" cache-tag="alias:main-menu" />
+            <menu alias="alias:main-menu" cache-id="main-menu" cache-fixed-duration="00:05:00"
+              cache-tag="alias:main-menu" />
           </div>
 
           <div class="nav-bar-mobile" onclick="toggle(this)">

@@ -2,7 +2,15 @@
 <div class="post-preview content-summary">
   <a display-for="@Model.ContentItem">
     <h1>
-      <i class="fas @Model.ContentItem.Content.Category.Icon.Text fa-xs" aria-hidden="true"></i>
+      @* <i class="fas @Model.ContentItem.Content.Category.Icon.Text fa-xs" aria-hidden="true"></i> *@
+@* 
+The fa prefix has been deprecated in version 5. The new default is the fas solid style and the fab style for brands 
+use fas =>web font solid 
+use fab => web font brand
+
+*@
+
+      <i class="@Model.ContentItem.Content.Category.Icon.Text fa-xs" aria-hidden="true"></i>
       <span class="align-middle">@Model.ContentItem.DisplayText</span>
     </h1>
   </a>

@@ -1,0 +1,28 @@
+@{
+  //TermPart of Category content item
+  // Check TermPartContentDriver.DisplayAsync
+
+  // localize
+  var pager = Model.Pager;
+  pager.PreviousText = T["← Newer Posts"];
+  pager.PreviousClass = "previous";
+
+  pager.NextText = T["Older Posts →"];
+  pager.NextClass = "next";
+
+  // Add classes for ul tag (List core shape)
+  pager.Classes.Add("pagination");
+  pager.Classes.Add("justify-content-center");
+
+  // Add class for li tag (List core shape)
+  pager.ItemClasses = new List<string>() { "page-item" };
+}
+
+
+@foreach (ContentItem blogPost in Model.ContentItems)
+{
+  @await Orchard.DisplayAsync(blogPost, "Summary")
+}
+
+
+@await DisplayAsync(pager)
