@@ -8,6 +8,7 @@ using OrchardCore.ContentManagement;
 using ReplicationFaq.Theme.Drivers;
 using ReplicationFaq.Theme.Models;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
+using OrchardCore.DisplayManagement.Descriptors;
 
 namespace ReplicationFaq.Theme
 {
@@ -19,6 +20,9 @@ namespace ReplicationFaq.Theme
             services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
             services.AddScoped<IDataMigration, Migrations>();
             services.AddContentPart<BlockListPart>().UseDisplayDriver<BlockListPartDisplayDriver>();
+
+            services.AddScoped<IShapeTableProvider, BlogShapeProvider>();
+
         }
     }
 }

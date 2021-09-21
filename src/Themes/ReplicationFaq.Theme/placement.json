@@ -1,0 +1,16 @@
+{
+  "Content": [
+    {
+      "place": "-",
+      "contentType": ["Blog"]
+    }
+  ],
+  "MediaField": [
+    {
+      "place": "-",
+      "contentType": ["BlogPost"],
+      "displayType": "Summary",
+      "differentiator": "BlogPost-Image"
+    }
+  ]
+}

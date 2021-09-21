@@ -1,0 +1,13 @@
+@* @addTagHelper *, OrchardCore.Contents.TagHelpers *@
+<div>
+  <div>
+    <span class="align-middle">
+      @Model.ContentItem.DisplayText
+    </span>
+  </div>
+
+  <div>
+    @* list of blog post in this category *@
+    @await DisplayAsync(Model.Content.TermPart)
+  </div>
+</div>

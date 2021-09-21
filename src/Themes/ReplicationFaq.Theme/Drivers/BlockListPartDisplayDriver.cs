@@ -14,6 +14,7 @@ using OrchardCore.Taxonomies.Settings;
 using OrchardCore.Title.Models;
 using ReplicationFaq.Theme.Models;
 using YesSql;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ReplicationFaq.Theme.Drivers
 {
@@ -52,17 +53,24 @@ namespace ReplicationFaq.Theme.Drivers
             var taxonomyContentItem = await _contentManager.GetAsync(settings.TaxonomyContentItemId, VersionOptions.Latest);
 
             var termes = taxonomyContentItem.As<TaxonomyPart>().Terms;
-            part.Items = termes.Select(t =>
+            var termTasks = termes.Select(async t =>
             {
                 var autoroutePart = t.As<AutoroutePart>();
                 var titlepart = t.As<TitlePart>();
+                var metadata = await _contentManager.PopulateAspectAsync<ContentItemMetadata>(t);
+
+                var action = metadata.DisplayRouteValues["action"].ToString();
+                var routes = metadata.DisplayRouteValues;
+                var url = urlHelper.Action(action, routes);
+
                 return new BlockListItem()
                 {
                     Name = titlepart.Title,
-                    Url = urlHelper.Content(autoroutePart.Path)
+                    Url = url
                 };
-            }).ToArray();
+            });
 
+            part.Items = await Task.WhenAll(termTasks);
             return View(nameof(BlockListPart), part).Location("Detail", "Content:10");
         }
     }
