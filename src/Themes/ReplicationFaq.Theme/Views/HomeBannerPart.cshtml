@@ -1,0 +1,25 @@
+@model ShapeViewModel<HomeBannerPart>
+@{
+  var homeBannerPart = Model.Value;
+  @*
+    HtmlFieldPrefix is the PartName i.e. ValidationPart, which is not needed in Display.
+    var htmlFieldPrefix = ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix;
+    ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = "";
+
+    @Html.ValidationMessage(Model.Value.For)
+    ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = htmlFieldPrefix; 
+  *@
+}
+
+<div class="section-search">
+  <h1 class="header">A FAQ on SQL Server Replication</h1>
+  <p class="text">Your one stop guide to SQL Server Replication</p>
+  <form asp-action="Create" method="post" class="no-multisubmit">
+    <div class="input-group">
+      @* Fallback to html helper because we can't use string as an input to tag helper *@
+      @Html.TextBox(nameof(homeBannerPart.SearchQueries), value: homeBannerPart.SearchQueries , htmlAttributes: new {
+      autocomplete="off" , @type =" search", placeholder = "Enter search term here" })
+      <span><i class="search"></i></span>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,22 @@
+@* For blog post content item details type (default) *@
+@using OrchardCore.Mvc.Utilities;
+@{
+  var contentTypeClassName = ((string)Model.ContentItem.ContentType).HtmlClassify();
+}
+
+<div class="@contentTypeClassName-content content-item -detail">
+  <div class="header-content">
+    header content
+    @await DisplayAsync(Model.Header)
+  </div>
+
+  <div class="meta-content">
+    meta content
+    @await DisplayAsync(Model.Meta)
+  </div>
+
+  <div class="main-content">
+    main content
+    @await DisplayAsync(Model.Content)
+  </div>
+</div>

@@ -19,7 +19,9 @@ namespace ReplicationFaq.Theme
             services.AddScoped<INavigationProvider, BreadcrumbsMenu>();
             services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
             services.AddScoped<IDataMigration, Migrations>();
+
             services.AddContentPart<BlockListPart>().UseDisplayDriver<BlockListPartDisplayDriver>();
+            services.AddContentPart<HomeBannerPart>().UseDisplayDriver<HomeBannerPartDisplayDriver>();
 
             services.AddScoped<IShapeTableProvider, BlogShapeProvider>();
 

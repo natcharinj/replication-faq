@@ -14,14 +14,12 @@ using OrchardCore.DisplayManagement.Notify;
 using Microsoft.AspNetCore.Mvc.Localization;
 using System.Threading.Tasks;
 using OrchardCore.Menu.Models;
-using OrchardCore.Title.Models;
 using YesSql;
 using System.Linq;
 using System.Text.RegularExpressions;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.Layers.Models;
 using OrchardCore.ContentManagement.Metadata.Settings;
-using OrchardCore.Html.Models;
 using ReplicationFaq.Theme.Models;
 
 namespace ReplicationFaq.Theme
@@ -63,6 +61,44 @@ namespace ReplicationFaq.Theme
             CreateBlockListPart();
             await CreateBlockListWidgetAsync();
             return 1;
+        }
+
+        public async Task<int> UpdateFrom1()
+        {
+            CreateHomeBannerPart();
+            await CreateHomeBannerWidgetAsync();
+            return 2;
+        }
+
+        private async Task CreateHomeBannerWidgetAsync()
+        {
+            const string widgetName = "HomeBannerWidget";
+            _contentDefinitionManager.AlterTypeDefinition(
+                widgetName,
+                type => type
+                    .WithPart(nameof(HomeBannerPart))
+                    .Stereotype("Widget")
+                    .Versionable(false) // no version
+            );
+
+            // Create a new content item, not save to database yet.
+            var contentItem = await _contentManager.NewAsync(widgetName);
+            contentItem.DisplayText = widgetName;
+            // Only using Weld that creates actual part json data in a database
+            contentItem.Weld<HomeBannerPart>(new HomeBannerPart());
+
+            // Show only on home page
+            var layerMetaData = new LayerMetadata()
+            {
+                RenderTitle = false,
+                Zone = "Content",
+                Layer = "Homepage",
+                Position = 1.0
+            };
+
+            // Attach a layer Meta data to a widget content item.
+            contentItem.Weld(layerMetaData);
+            await _contentManager.CreateAsync(contentItem, VersionOptions.Published);
         }
 
         private async Task CreateMenuAsync()
@@ -155,6 +191,15 @@ namespace ReplicationFaq.Theme
             );
         }
 
+        private void CreateHomeBannerPart()
+        {
+            _contentDefinitionManager.AlterPartDefinition(
+                nameof(HomeBannerPart),
+                part => part
+                    .Attachable(true)
+                    .WithDescription("Provide a home banner part for a content item.")
+            );
+        }
 
         private async Task CreateBlockListWidgetAsync()
         {

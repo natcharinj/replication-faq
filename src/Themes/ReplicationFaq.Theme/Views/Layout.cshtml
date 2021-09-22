@@ -19,7 +19,7 @@
     rel='stylesheet' type='text/css'>
 
 
-  <style asp-name="font-awesome" version="5" at="Head" ></style>
+  <style asp-name="font-awesome" version="5" at="Head"></style>
   <style asp-name="bootstrap" at="Head"></style>
   <!-- You need spectify a version of dependent resource it it has a version -->
   <style asp-name="replication-faq-theme" at="Head"></style>
@@ -52,14 +52,7 @@
       </nav>
       @* Breadcrumbs navigation *@
       @(await DisplayAsync(await New.Navigation(MenuName: "breadcrumbs", RouteData: this.ViewContext.RouteData)))
-      <div class="section-search">
-        <h1 class="header">A FAQ on SQL Server Replication</h1>
-        <p class="text">Your one stop guide to SQL Server Replication</p>
-        <div class="input-group">
-          <input type="search" placeholder="Enter search term here" autocomplete="off" />
-          <span><i class="search"></i></span>
-        </div>
-      </div>
+      
     </div>
     <div class="main-content">
       @await RenderBodyAsync()

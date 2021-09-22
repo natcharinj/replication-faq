@@ -54,11 +54,10 @@ body {
   height: max-content;
   margin: 0;
 }
+
 .main-container {
   min-height: 100vh;
   height: max-content;
-  display: flex;
-  flex-direction: column;
 }
 
 .footer {
@@ -89,7 +88,6 @@ body {
   }
 }
 .main-content {
-  @extend %flex-shared;
   max-width: 1060px;
   width: 100%;
   margin: 0px auto;
