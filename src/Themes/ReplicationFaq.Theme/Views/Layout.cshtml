@@ -52,68 +52,85 @@
       </nav>
       @* Breadcrumbs navigation *@
       @(await DisplayAsync(await New.Navigation(MenuName: "breadcrumbs", RouteData: this.ViewContext.RouteData)))
-      
     </div>
+
+    <div>
+      @await RenderSectionAsync("Message", required: false)
+    </div>
+
+    <div>
+      @await RenderSectionAsync("BeforeContent", required: false)
+    </div>
+
     <div class="main-content">
       @await RenderBodyAsync()
     </div>
 
-    <div class="footer">
-      <div class="row">
-        <div class="col-2">
-          <p>Copyright 2017 Powered by Code Love</p>
-        </div>
-        <div class="col-2">
-          <a href="http://www.facebook.com"><span><i class="facebook"></i></span></a>
-          <a href="#"><span><i class="google"></i></span></a>
-          <a href="#"><span><i class="vimeo"></i></span></a>
-          <a href="#"><span><i class="instagram"></i></span></a>
-          <a href="#"><span><i class="twitter"></i></span></a>
-          <a href="#"><span><i class="youtube"></i></span></a>
-        </div>
+    <div class="main-footer">
+      <div class="copyright-message">
+        Copyright 2017 Powered by Code Love
       </div>
+      <ul class="social-network">
+        @* https://fontawesome.com/v5.15/icons?d=gallery&p=2 *@
+        <li>
+          <a href="">
+            <i class="fab fa-facebook"></i>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </li>
+      </ul>
     </div>
-    <resources type="FootScript" />
 
-  </div>
-  <div class="nav-menu-mobile" id="nav-menu-mobile">
-    <div class="list-nav-menu-mobile" id="list-nav-menu-mobile">
-      <div class="row">
-        <div class="col-1 logo-mobile">
-          <span><i class="life-ring"></i>SITE NAME</span>
+    <div class="nav-menu-mobile" id="nav-menu-mobile">
+      <div class="list-nav-menu-mobile" id="list-nav-menu-mobile">
+        <div class="row">
+          <div class="col-1 logo-mobile">
+            <span><i class="life-ring"></i>SITE NAME</span>
+          </div>
+          @* Main menu mobile version *@
+          <menu alias="alias:main-menu" cache-id="main-menu" cache-fixed-duration="00:05:00"
+            cache-tag="alias:main-menu" />
         </div>
-         @* Main menu mobile version *@
-        <menu alias="alias:main-menu" cache-id="main-menu" cache-fixed-duration="00:05:00" cache-tag="alias:main-menu" />
-      </div>
-      <div class="row">
-        <div class="col-1 text--center btn-support">
-          <a class="">Support</a>
+        <div class="row">
+          <div class="col-1 text--center btn-support">
+            <a class="">Support</a>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-1 text--center">
-          <a href="http://www.facebook.com"><span><i class="facebook"></i></span></a>
-          <a href="#"><span><i class="google"></i></span></a>
-          <a href="#"><span><i class="twitter"></i></span></a>
+        <div class="row">
+          <div class="col-1 text--center">
+            <a href="http://www.facebook.com"><span><i class="facebook"></i></span></a>
+            <a href="#"><span><i class="google"></i></span></a>
+            <a href="#"><span><i class="twitter"></i></span></a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <script>
-    document.getElementById('nav-menu-mobile').addEventListener('click', function (event) {
-      console.log("clicked");
-      const ignoreClickOnMeElement = document.getElementById('list-nav-menu-mobile')
-      var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
-      if (!isClickInsideElement) {
-        document.getElementById('nav-menu-mobile').className = 'nav-menu-mobile'
+
+    <resources type="FootScript" />
+    <script>
+      document.getElementById('nav-menu-mobile').addEventListener('click', function (event) {
+        console.log("clicked");
+        const ignoreClickOnMeElement = document.getElementById('list-nav-menu-mobile')
+        var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
+        if (!isClickInsideElement) {
+          document.getElementById('nav-menu-mobile').className = 'nav-menu-mobile'
+        }
+      });
+      function toggle() {
+        const navMenu = document.getElementById('nav-menu-mobile')
+        const className = navMenu.className
+        navMenu.className = className == 'nav-menu-mobile' ? 'nav-menu-mobile show' : 'nav-menu-mobile'
       }
-    });
-    function toggle() {
-      const navMenu = document.getElementById('nav-menu-mobile')
-      const className = navMenu.className
-      navMenu.className = className == 'nav-menu-mobile' ? 'nav-menu-mobile show' : 'nav-menu-mobile'
-    }
-  </script>
+    </script>
 </body>
 
 </html>

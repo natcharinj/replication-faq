@@ -93,7 +93,7 @@ namespace ReplicationFaq.Theme
                 RenderTitle = false,
                 Zone = "Content",
                 Layer = "Homepage",
-                Position = 1.0
+                Position = 1
             };
 
             // Attach a layer Meta data to a widget content item.
@@ -221,9 +221,9 @@ namespace ReplicationFaq.Theme
             var layerMetaData = new LayerMetadata()
             {
                 RenderTitle = false,
-                Zone = "Content",
+                Zone = "Content", //=> BeforeContent
                 Layer = "Homepage",
-                Position = 1.0
+                Position = 0
             };
 
             // Attach Layer Meta data to a widget content item.
