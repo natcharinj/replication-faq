@@ -1,12 +1,12 @@
 @* @addTagHelper *, OrchardCore.Contents.TagHelpers *@
 <div>
-  <div>
-    <span class="align-middle">
+  <div class="category-header">
+    <span>
       @Model.ContentItem.DisplayText
     </span>
   </div>
 
-  <div>
+  <div class="content-list">
     @* list of blog post in this category *@
     @await DisplayAsync(Model.Content.TermPart)
   </div>

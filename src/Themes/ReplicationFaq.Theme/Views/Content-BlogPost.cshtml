@@ -6,17 +6,14 @@
 
 <div class="@contentTypeClassName-content content-item -detail">
   <div class="header-content">
-    header content
-    @await DisplayAsync(Model.Header)
+    @await DisplayAsync(Model.ContentItem.DisplayText)
   </div>
 
   <div class="meta-content">
-    meta content
     @await DisplayAsync(Model.Meta)
   </div>
 
-  <div class="main-content">
-    main content
+  <div class="post-content">
     @await DisplayAsync(Model.Content)
   </div>
 </div>

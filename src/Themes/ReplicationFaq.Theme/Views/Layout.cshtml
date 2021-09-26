@@ -33,11 +33,11 @@
 
 <body dir="@Orchard.CultureDir()">
   <div class="main-container">
-    <div class="banner-homepage">
+    <div class="banner-navbar">
       <nav class="nav-main nav-transparent">
         <div class="nav-container">
           <div class="logo">
-            <span><i class="life-ring"></i>Site Name</span>
+            <span><i class="far fa-life-ring icon"></i>Site Name</span>
           </div>
           <div class="nav-items">
             @* Main menu *@
@@ -45,8 +45,8 @@
               cache-tag="alias:main-menu" />
           </div>
 
-          <div class="nav-bar-mobile" onclick="toggle(this)">
-            <span><i class="bars"></i></span>
+          <div class="iconmobile" onclick="toggle(this)">
+            <span class="icon"><i class="fa fa-bars"></i></span>
           </div>
         </div>
       </nav>
@@ -72,17 +72,17 @@
       </div>
       <ul class="social-network">
         @* https://fontawesome.com/v5.15/icons?d=gallery&p=2 *@
-        <li>
+        <li class="item">
           <a href="">
             <i class="fab fa-facebook"></i>
           </a>
         </li>
-        <li>
+        <li  class="item">
           <a href="">
             <i class="fas fa-envelope"></i>
           </a>
         </li>
-        <li>
+        <li  class="item">
           <a href="">
             <i class="fab fa-youtube"></i>
           </a>
@@ -90,26 +90,27 @@
       </ul>
     </div>
 
-    <div class="nav-menu-mobile" id="nav-menu-mobile">
-      <div class="list-nav-menu-mobile" id="list-nav-menu-mobile">
-        <div class="row">
-          <div class="col-1 logo-mobile">
-            <span><i class="life-ring"></i>SITE NAME</span>
-          </div>
-          @* Main menu mobile version *@
-          <menu alias="alias:main-menu" cache-id="main-menu" cache-fixed-duration="00:05:00"
-            cache-tag="alias:main-menu" />
+    <div class="nav-mobile" id="nav-mobile">
+      <div class="nav-mobile-items" id="nav-mobile-items">
+        <div class="logo">
+          <span><i class="far fa-life-ring icon"></i>SITE NAME</span>
         </div>
-        <div class="row">
-          <div class="col-1 text--center btn-support">
-            <a class="">Support</a>
-          </div>
+        @* Main menu mobile version *@
+        <menu alias="alias:main-menu" cache-id="main-menu" cache-fixed-duration="00:05:00"
+          cache-tag="alias:main-menu" />
+        <div class="button">
+            <a class="link-button">Support</a>
         </div>
-        <div class="row">
-          <div class="col-1 text--center">
-            <a href="http://www.facebook.com"><span><i class="facebook"></i></span></a>
-            <a href="#"><span><i class="google"></i></span></a>
-            <a href="#"><span><i class="twitter"></i></span></a>
+        <div class="social-network -center">
+          <div class="item">
+            <a href="http://www.facebook.com"><span><i class="fab fa-facebook"></i></span></a>
+          </div>
+          <div class="item">
+            <a href="#"><span><i class="fas fa-envelope"></i></span></a>
+          </div>
+          <div class="item">
+            <a href="#"><span><i class="fab fa-youtube"></i></span></a>
+          </div>
           </div>
         </div>
       </div>
@@ -117,18 +118,18 @@
 
     <resources type="FootScript" />
     <script>
-      document.getElementById('nav-menu-mobile').addEventListener('click', function (event) {
+      document.getElementById('nav-mobile').addEventListener('click', function (event) {
         console.log("clicked");
-        const ignoreClickOnMeElement = document.getElementById('list-nav-menu-mobile')
+        const ignoreClickOnMeElement = document.getElementById('nav-mobile-items')
         var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
         if (!isClickInsideElement) {
-          document.getElementById('nav-menu-mobile').className = 'nav-menu-mobile'
+          document.getElementById('nav-mobile').className = 'nav-mobile'
         }
       });
       function toggle() {
-        const navMenu = document.getElementById('nav-menu-mobile')
+        const navMenu = document.getElementById('nav-mobile')
         const className = navMenu.className
-        navMenu.className = className == 'nav-menu-mobile' ? 'nav-menu-mobile show' : 'nav-menu-mobile'
+        navMenu.className = className == 'nav-mobile' ? 'nav-mobile -show' : 'nav-mobile'
       }
     </script>
 </body>

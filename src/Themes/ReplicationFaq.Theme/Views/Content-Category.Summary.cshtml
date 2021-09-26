@@ -1,5 +1,6 @@
 @* @addTagHelper *, OrchardCore.Contents.TagHelpers *@
 <div class="post-preview content-summary">
+  <i class="@Model.ContentItem.Content.Category.Icon.Text fa-xs" aria-hidden="true"></i>
   <a display-for="@Model.ContentItem">
     <h1>
       @* <i class="fas @Model.ContentItem.Content.Category.Icon.Text fa-xs" aria-hidden="true"></i> *@
@@ -10,8 +11,8 @@ use fab => web font brand
 
 *@
 
-      <i class="@Model.ContentItem.Content.Category.Icon.Text fa-xs" aria-hidden="true"></i>
-      <span class="align-middle">@Model.ContentItem.DisplayText</span>
+      
+      <span>@Model.ContentItem.DisplayText</span>
     </h1>
   </a>
 </div>

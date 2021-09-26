@@ -1,11 +1,69 @@
+$urlImage: "/ReplicationFaq.Theme/images";
 .home-banner {
-  color: #000;
+  color: #f2f2f2;
+  background: url($urlImage + "/city-2.jpg");
+  background-color: #21b4db;
+  background-size: cover;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-blend-mode: color-burn;
+  text-align: center;
+
+  > .header {
+    padding: 90px 0px 20px;
+    font-size: 56px;
+    line-height: 1.1;
+  }
+
+  > .text {
+    font-size: 20px;
+    line-height: 1.5;
+    padding: 20px;
+  }
+
+  @media (max-width: 768px) {
+    > .header {
+      font-size: 32px;
+    }
+  }
 }
 
-.copyright-message{
+.input-icon {
+  width: 100%;
+  max-width: 650px;
+  margin: auto;
+  position: relative;
+  color: #425869;
 
-}
+  > .inputfield {
+    font-size: 16px;
+    border-color: transparent;
+    height: 55px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 30px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    margin: 40px 0px 60px;
+    width: 100%;
+    max-width: 650px;
+    outline: unset;
+  }
 
-.social-network{
+  > .inputicon {
+    top: 55px;
+    right: 20px;
+    color: #8f9fad;
+    position: absolute;
+  }
 
+  @media (max-width: 425px) {
+    > .inputfield {
+      width: 90%;
+    }
+
+    > .inputicon {
+      right: calc(15% - 20px);
+    }
+  }
 }
