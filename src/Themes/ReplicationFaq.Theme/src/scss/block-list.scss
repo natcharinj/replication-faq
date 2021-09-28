@@ -1,9 +1,9 @@
 .block-list {
-  $widget-item-gap: 20px;
+  $widget-item-gap: 30px;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  padding: $widget-item-gap 0;
+  padding: 40px 0;
   gap: $widget-item-gap;
 
   @media (min-width: 768px) {
@@ -20,8 +20,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: #ccc 1px solid;
+  color: #02b3e4;
+  border: 1px solid #02b3e4;
   position: relative;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+
+  &:hover { color: #f2f2f2; background-color: #02b3e4; }
 
   @media (min-width: 768px) {
     height: 100px;

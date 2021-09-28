@@ -1,0 +1,38 @@
+.category-header {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin: 15px 0px;
+}
+
+.content {
+  margin-bottom: 20px;
+}
+
+.pagination {
+  gap: 20px;
+
+  > .previous > .page-link,
+  > .next > .page-link {
+    color: #425869;
+    transition: color 0.1s ease-in-out;
+    outline: none;
+    box-shadow: none;
+  }
+
+  > .previous > .page-link:hover,
+  > .next > .page-link:hover {
+    color: #8f9fad;
+    background-color: #ffffff;
+  }
+
+  @media (max-width: 375px) {
+    gap: 10px;
+
+    > .previous > .page-link,
+    > .next > .page-link {
+      font-size: 13px;
+      padding: 10px;
+    }
+  }
+}
