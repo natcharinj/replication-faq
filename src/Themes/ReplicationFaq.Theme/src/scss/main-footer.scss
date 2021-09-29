@@ -30,13 +30,18 @@
 .social-network {
   display: flex;
   list-style: none;
-
+  justify-content: flex-end;
+  
   &.-center {
     text-align: center;
   }
 
   > .item {
     font-size: 25px;
-    width: 100%;
+    margin: 0 15px;
+  }
+
+  @media (max-width: 768px) {
+    justify-content: center;
   }
 }
