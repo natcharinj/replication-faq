@@ -35,9 +35,9 @@ $spacing-content: 15px 0;
     margin: $spacing-content;
   }
 
-  > .image.-cover {
+  img {
     margin: $spacing-content;
-    width: 100%;
+    max-width: 100%;
   }
 
   > .field-name-blog-post-tags {
