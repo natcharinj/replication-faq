@@ -58,16 +58,34 @@ namespace ReplicationFaq.Theme
         public async Task<int> CreateAsync()
         {
             await CreateMenuAsync();
+
             CreateBlockListPart();
             await CreateBlockListWidgetAsync();
+
+            CreateHomeBannerPart();
+            await CreateHomeBannerWidgetAsync();
+
+            UpdateBlogPostType();
+
             return 1;
         }
 
-        public async Task<int> UpdateFrom1()
+        private void UpdateBlogPostType()
         {
-            CreateHomeBannerPart();
-            await CreateHomeBannerWidgetAsync();
-            return 2;
+            _contentDefinitionManager.AlterTypeDefinition(
+                "BlogPost",
+                type => type
+                    .WithPart("MarkdownBodyPart", part => part.WithEditor("Wysiwyg"))
+            );
+
+            var contentPartDefinition = _contentDefinitionManager.GetPartDefinition("BlogPost");
+            var field = contentPartDefinition.Fields.FirstOrDefault(x => x.Name == "Subtitle");
+            _contentDefinitionManager.AlterPartDefinition(
+                "BlogPost", // Same name as Content type to contain fields
+                part => part
+                    .RemoveField(field.Name)
+                    .RemoveField("Image") // Banner Image
+            );
         }
 
         private async Task CreateHomeBannerWidgetAsync()
@@ -93,7 +111,7 @@ namespace ReplicationFaq.Theme
                 RenderTitle = false,
                 Zone = "Content",
                 Layer = "Homepage",
-                Position = 1
+                Position = 0
             };
 
             // Attach a layer Meta data to a widget content item.
@@ -223,7 +241,7 @@ namespace ReplicationFaq.Theme
                 RenderTitle = false,
                 Zone = "Content", //=> BeforeContent
                 Layer = "Homepage",
-                Position = 0
+                Position = 1
             };
 
             // Attach Layer Meta data to a widget content item.
