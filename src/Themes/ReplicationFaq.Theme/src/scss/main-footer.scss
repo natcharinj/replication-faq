@@ -2,7 +2,8 @@
   $widget-item-gap: 30px;
   display: flex;
   color: #8f9fad;
-  margin: 20px $widget-item-gap;
+  max-width: 1060px;
+  margin: 20px auto;
   > * {
     width: 100%;
   }
@@ -22,7 +23,7 @@
   }
 
   @media (min-width: 768px) {
-    width: calc(100% - #{$widget-item-gap} * 2);
+    width: calc(100% - 40px);
     align-items: center;
   }
 }
