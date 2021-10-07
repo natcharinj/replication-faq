@@ -4,7 +4,7 @@ namespace ReplicationFaq.Theme.Models
 {
     public class HomeBannerPart : ContentPart
     {
-        public string SearchQueries { get; set; }
+        public string Terms { get; set; }
         // transform to search term
         // var searchTerm = string.Join(" OR ", words);
         // https://dba.stackexchange.com/a/230067/165543

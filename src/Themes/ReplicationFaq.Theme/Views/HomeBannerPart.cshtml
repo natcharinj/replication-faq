@@ -11,16 +11,16 @@
   *@
 }
 
-
 <div class="home-banner">
   <h1 class="header">A FAQ on SQL Server Replication</h1>
   <p class="text">Your one stop guide to SQL Server Replication</p>
-  <form asp-action="Create" method="post" class="no-multisubmit">
+  <form method="get" action="/Search">
     <div class="input-icon">
       @* Fallback to html helper because we can't use string as an input to tag helper *@
-      @Html.TextBox(nameof(homeBannerPart.SearchQueries), value: homeBannerPart.SearchQueries , htmlAttributes: new {
-      autocomplete="off" , @type =" search", placeholder = "Enter search term here", @class = "inputfield" })
+      <input name="Terms" type="text" placeholder='Put your search terms here and press "enter" to search'
+        autocomplete="off" class="inputfield" autofocus />
       <span class="inputicon"><i class="fa fa-search"></i></span>
+      <input type="submit" style="display:none;" />
     </div>
   </form>
 </div>

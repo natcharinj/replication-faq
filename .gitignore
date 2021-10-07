@@ -355,3 +355,9 @@ App_Data
 # Remove generatated CSS/JS
 wwwroot/*
 is-cache
+
+# Ignore development configuration which contains sensitive data
+appsettings.Development.json
+
+# Ingore Azure Storgage Account cache
+ms-cache

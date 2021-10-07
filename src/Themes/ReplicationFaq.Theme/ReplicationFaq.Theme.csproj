@@ -23,6 +23,9 @@
     <PackageReference Include="OrchardCore.Html" Version="1.0.0" />
     <PackageReference Include="OrchardCore.Autoroute" Version="1.0.0" />
     <PackageReference Include="OrchardCore.Taxonomies" Version="1.0.0" />
+    <PackageReference Include="OrchardCore.Search.Abstractions" Version="1.0.0" />
+
+
 
 
 
