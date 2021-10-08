@@ -21,6 +21,7 @@ using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.Layers.Models;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using ReplicationFaq.Theme.Models;
+using OrchardCore.Autoroute.Models;
 
 namespace ReplicationFaq.Theme
 {
@@ -72,10 +73,24 @@ namespace ReplicationFaq.Theme
 
         private void UpdateBlogPostType()
         {
+            var urlPattern = new[] {
+                "{% assign category = ContentItem.Content.BlogPost.Category | taxonomy_terms | first %}",
+                "{{ 'categories' }}/{{ category | display_text | slugify }}/{{ ContentItem | display_text | slugify }}"
+            };
+
             _contentDefinitionManager.AlterTypeDefinition(
                 "BlogPost",
                 type => type
                     .WithPart("MarkdownBodyPart", part => part.WithEditor("Wysiwyg"))
+                    .WithPart(nameof(AutoroutePart), part => part.WithSettings(
+                        new AutoroutePartSettings()
+                        {
+                            Pattern = string.Join("\n", urlPattern),
+                            AllowCustomPath = true,
+                            AllowUpdatePath = true,
+                            //ManageContainedItemRoutes = true,
+                        })
+                    )
             );
 
             var contentPartDefinition = _contentDefinitionManager.GetPartDefinition("BlogPost");
