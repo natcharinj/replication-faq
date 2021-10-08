@@ -14,12 +14,14 @@
 <div class="home-banner">
   <h1 class="header">A FAQ on SQL Server Replication</h1>
   <p class="text">Your one stop guide to SQL Server Replication</p>
-  <form method="get" action="/Search">
-    <div class="input-icon">
+  <form method="get" action="/Search" class="form-search">
+    <div class="input-group">
       @* Fallback to html helper because we can't use string as an input to tag helper *@
       <input name="Terms" type="text" placeholder='Put your search terms here and press "enter" to search'
-        autocomplete="off" class="inputfield" autofocus />
-      <span class="inputicon"><i class="fa fa-search"></i></span>
+        autocomplete="off" class="form-control formInput" autofocus />
+         <div class="input-group-append">
+            <button class="btn btn-primary btnIcon"><i class="fa fa-search"></i></button>
+         </div>
       <input type="submit" style="display:none;" />
     </div>
   </form>
