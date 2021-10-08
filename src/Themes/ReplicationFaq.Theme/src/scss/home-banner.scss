@@ -28,42 +28,32 @@ $urlImage: "/ReplicationFaq.Theme/images";
   }
 }
 
-.input-icon {
+.form-search {
   width: 100%;
   max-width: 650px;
-  margin: auto;
+  margin: 0px auto;
   position: relative;
   color: #425869;
-
-  > .inputfield {
-    font-size: 16px;
-    border-color: transparent;
-    height: 55px;
-    padding-left: 12px;
-    padding-right: 12px;
-    border-radius: 30px;
-    background: #fff;
-    border: 1px solid #e5e5e5;
-    margin: 40px 0px 60px;
-    width: 100%;
-    max-width: 650px;
-    outline: unset;
-  }
-
-  > .inputicon {
-    top: 55px;
-    right: 20px;
-    color: #8f9fad;
-    position: absolute;
-  }
+  padding: 40px 0px 60px;
 
   @media (max-width: 425px) {
-    > .inputfield {
-      width: 90%;
+    width: 90%;
+  }
+}
+
+.input-group {
+  @media (max-width: 425px) {
+    > .formInput {
+      min-height: calc(1.5em + (0.5rem + 2px));
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+      border-radius: 0.2rem;
     }
 
-    > .inputicon {
-      right: calc(15% - 20px);
+    > .input-group-append > .btnIcon {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+      border-radius: 0.2rem;
     }
   }
 }
