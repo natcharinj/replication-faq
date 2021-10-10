@@ -361,3 +361,6 @@ appsettings.Development.json
 
 # Ingore Azure Storgage Account cache
 ms-cache
+
+# Ignore Azure App Service publish profile
+publish-profile.xml
