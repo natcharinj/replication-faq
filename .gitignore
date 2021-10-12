@@ -365,3 +365,6 @@ ms-cache
 # Ignore Azure App Service publish profile
 publish-profile.xml
 set-github-secrets.sh
+app-service-configuration.json
+set-configuration.sh
+get-publish-profile.sh
