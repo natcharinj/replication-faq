@@ -3,7 +3,7 @@
   display: flex;
   color: #8f9fad;
   max-width: 1060px;
-  margin: 20px auto;
+  margin: auto auto 20px;
   > * {
     width: 100%;
   }
@@ -15,7 +15,6 @@
 
   @media (max-width: 768px) {
     flex-direction: column;
-    margin: 20px 0;
 
     > .copyright-message {
       padding: 0px 0px 15px;
