@@ -1,0 +1,34 @@
+.organization-profile-content > .main-content {
+  $gap: 20px;
+  gap: $gap;
+  > * {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    > * {
+      width: calc(50% - #{$gap}/ 2);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    > .contact-information {
+      padding-left: 100px;
+    }
+  }
+}
+
+.social-network-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-network-link {
+  &:hover,
+  &:link,
+  &:active,
+  &:visited {
+    text-decoration: none;
+  }
+}

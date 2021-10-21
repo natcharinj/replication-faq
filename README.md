@@ -22,3 +22,8 @@ $ yarn workspace replication-faq-theme run watch
 In other words, any : should be replaced by __ (double underscore).
 
 
+dotnet add reference ../Modules/Codesanook.OrganizationProfile/Codesanook.OrganizationProfile.csproj
+
+
+Add a module to a theme
+dotnet add reference ../../Modules/Codesanook.OrganizationProfile/Codesanook.OrganizationProfile.csproj

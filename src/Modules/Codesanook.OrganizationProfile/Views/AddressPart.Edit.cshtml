@@ -1,0 +1,98 @@
+@model ShapeViewModel<AddressPart>
+
+<fieldset>
+  <legend>@T["Address"]</legend>
+  <div>
+    <label asp-for="Value.ShowAddress">
+      <input type="checkbox" asp-for="Value.ShowAddress" class="part-display-toggle">
+      @T[nameof(Model.Value.ShowAddress)]
+    </label>
+  </div>
+
+  @if (Model.Value.ShowAddress)
+  {
+    <div asp-validation-class-for="Value.HouseNumber" class="form-group">
+      <label asp-for="Value.HouseNumber">@T[nameof(Model.Value.HouseNumber)]</label>
+      <input asp-for="Value.HouseNumber" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.HouseNumber)]</span>
+    </div>
+
+    <div asp-validation-class-for="Value.VillageName" class="form-group">
+      <label asp-for="Value.VillageName">@T[nameof(Model.Value.VillageName)]</label>
+      <input asp-for="Value.VillageName" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.VillageName)]</span>
+    </div>
+
+    <div asp-validation-class-for="Value.VillageNumber" class="form-group">
+      <label asp-for="Value.VillageNumber">@T[nameof(Model.Value.VillageNumber)]</label>
+      <input asp-for="Value.VillageNumber" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.VillageNumber)]</span>
+    </div>
+
+    <div asp-validation-class-for="Value.BuildingName" class="form-group">
+      <label asp-for="Value.BuildingName">@T[nameof(Model.Value.BuildingName)]</label>
+      <input asp-for="Value.BuildingName" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.BuildingName)]</span>
+    </div>
+
+    <div asp-validation-class-for="Value.RoomNumber" class="form-group">
+      <label asp-for="Value.RoomNumber">@T[nameof(Model.Value.RoomNumber)]</label>
+      <input asp-for="Value.RoomNumber" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.RoomNumber)]</span>
+    </div>
+
+    <div asp-validation-class-for="Value.Floor" class="form-group">
+      <label asp-for="Value.Floor">@T[nameof(Model.Value.Floor)]</label>
+      <input asp-for="Value.Floor" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.Floor)]</span>
+    </div>
+
+    <div asp-validation-class-for="Value.Lane" class="form-group">
+      <label asp-for="Value.Lane">@T[nameof(Model.Value.Lane)]</label>
+      <input asp-for="Value.Lane" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.Lane)]</span>
+    </div>
+
+    <div asp-validation-class-for="Value.Street" class="form-group">
+      <label asp-for="Value.Street">@T[nameof(Model.Value.Street)]</label>
+      <input asp-for="Value.Street" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.Street)]</span>
+    </div>
+
+    <div asp-validation-class-for="Value.Subdistrict" class="form-group">
+      <label asp-for="Value.Subdistrict">@T[nameof(Model.Value.Subdistrict)]</label>
+      <input asp-for="Value.Subdistrict" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.Subdistrict)]</span>
+    </div>
+
+    <div asp-validation-class-for="Value.District" class="form-group">
+      <label asp-for="Value.District">@T[nameof(Model.Value.District)]</label>
+      <input asp-for="Value.District" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.District)]</span>
+    </div>
+
+    <div asp-validation-class-for="Value.Province" class="form-group">
+      <label asp-for="Value.Province">@T[nameof(Model.Value.Province)]</label>
+      <input asp-for="Value.Province" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.Province)]</span>
+    </div>
+
+    <div asp-validation-class-for="Value.State" class="form-group">
+      <label asp-for="Value.State">@T[nameof(Model.Value.State)]</label>
+      <input asp-for="Value.State" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.State)]</span>
+    </div>
+
+    <div asp-validation-class-for="Value.Country" class="form-group">
+      <label asp-for="Value.Country">@T[nameof(Model.Value.Country)]</label>
+      <input asp-for="Value.Country" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.Country)]</span>
+    </div>
+
+    <div asp-validation-class-for="Value.ZipCode" class="form-group">
+      <label asp-for="Value.ZipCode">@T[nameof(Model.Value.ZipCode)]</label>
+      <input asp-for="Value.ZipCode" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.ZipCode)]</span>
+    </div>
+  }
+</fieldset>

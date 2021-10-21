@@ -1,0 +1,27 @@
+@model ShapeViewModel<ContactInformationPart>
+  
+<fieldset>
+  <legend>Contact information</legend>
+
+  <div>
+    <label asp-for="Value.ShowContactInformation">
+      <input type="checkbox" asp-for="Value.ShowContactInformation" class="part-display-toggle">
+      @T[nameof(Model.Value.ShowContactInformation)]
+    </label>
+  </div>
+
+  @if (Model.Value.ShowContactInformation)
+  {
+    <div asp-validation-class-for="Value.PhoneNumber" class="form-group">
+      <label asp-for="Value.PhoneNumber">@T[nameof(Model.Value.PhoneNumber)]</label>
+      <input asp-for="Value.PhoneNumber" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.PhoneNumber)]</span>
+    </div>
+
+    <div asp-validation-class-for="Value.EmailAddress" class="form-group">
+      <label asp-for="Value.EmailAddress">@T[nameof(Model.Value.EmailAddress)]</label>
+      <input asp-for="Value.EmailAddress" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.EmailAddress)]</span>
+    </div>
+  }
+</fieldset>

@@ -1,0 +1,126 @@
+@model ShapeViewModel<AddressPart>
+
+@if (Model.Value.ShowAddress)
+{
+  <div>
+  @if (!string.IsNullOrWhiteSpace(Model.Value.HouseNumber))
+    {
+      <span class="text-nowrap">
+        @T[Html.DisplayNameFor(m => m.Value.HouseNumber).ToString()]
+      </span>
+      <span class="text-nowrap">
+        @Model.Value.HouseNumber,
+      </span>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.Value.VillageName))
+    {
+      <span class="text-nowrap">
+        @T[Html.DisplayNameFor(m => m.Value.VillageName).ToString()]
+      </span>
+      <span class="text-nowrap">
+        @Model.Value.VillageName
+      </span>
+    }
+
+    @if (Model.Value.VillageNumber > 0)
+    {
+      <span class="text-nowrap">
+        @T[Html.DisplayNameFor(m => m.Value.VillageNumber).ToString()]
+      </span>
+      <span class="text-nowrap">
+        @Model.Value.VillageNumber,
+      </span>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.Value.BuildingName))
+    {
+      <span class="text-nowrap">
+        @T[Html.DisplayNameFor(m => m.Value.BuildingName).ToString()]
+      </span>
+      <span class="text-nowrap">
+        @Model.Value.BuildingName
+      </span>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.Value.RoomNumber))
+    {
+      <span class="text-nowrap">
+        @T[Html.DisplayNameFor(m => m.Value.RoomNumber).ToString()]
+      </span>
+      <span class="text-nowrap">
+        @Model.Value.RoomNumber
+      </span>
+    }
+
+    @if (Model.Value.Floor.HasValue)
+    {
+      <span class="text-nowrap">
+        @T[Html.DisplayNameFor(m => m.Value.Floor).ToString()]
+      </span>
+      <span class="text-nowrap">
+        @Model.Value.Floor
+      </span>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.Value.Lane))
+    {
+      <span class="text-nowrap">
+        @T[Html.DisplayNameFor(m => m.Value.Lane).ToString()]
+      </span>
+      <span class="text-nowrap">
+        @Model.Value.Lane
+      </span>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.Value.Street))
+    {
+      <span class="text-nowrap">
+        @T[Html.DisplayNameFor(m => m.Value.Street).ToString()]
+      </span>
+      <span class="text-nowrap">
+        @Model.Value.Street,
+      </span>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.Value.Subdistrict))
+    {
+      <span class="text-nowrap">
+        @T[Html.DisplayNameFor(m => m.Value.Subdistrict).ToString()]
+      </span>
+      <span class="text-nowrap">
+        @Model.Value.Subdistrict
+      </span>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.Value.District))
+    {
+      <span class="text-nowrap">
+        @T[Html.DisplayNameFor(m => m.Value.District).ToString()]
+      </span>
+      <span class="text-nowrap">
+        @Model.Value.District
+      </span>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.Value.Province))
+    {
+      <span class="text-nowrap">
+        @T[Html.DisplayNameFor(m => m.Value.Province).ToString()]
+      </span>
+      <span class="text-nowrap">
+        @Model.Value.Province
+      </span>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.Value.ZipCode))
+    {
+      <span class="text-nowrap">
+        @T[Html.DisplayNameFor(m => m.Value.ZipCode).ToString()]
+      </span>
+      <span class="text-nowrap">
+        @Model.Value.ZipCode
+      </span>
+    }
+  </div>
+}

@@ -22,6 +22,7 @@ using OrchardCore.Layers.Models;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using ReplicationFaq.Theme.Models;
 using OrchardCore.Autoroute.Models;
+using Codesanook.OrganizationProfile.Models;
 
 namespace ReplicationFaq.Theme
 {
@@ -67,8 +68,55 @@ namespace ReplicationFaq.Theme
             await CreateHomeBannerWidgetAsync();
 
             UpdateBlogPostType();
+            await CreateOrganizationProfileAsync();
 
             return 1;
+        }
+
+        private async Task CreateOrganizationProfileAsync()
+        {
+            var contentItem = await _contentManager.NewAsync("OrganizationProfile");
+
+            contentItem.Alter<AddressPart>(
+                nameof(AddressPart),
+                a =>
+                {
+                    a.HouseNumber = "100";
+                    a.BuildingName = "building name";
+                    a.RoomNumber = "100/1";
+                    a.Floor = 10;
+                    a.Lane = "Lane";
+                    a.Street = "Street";
+                    a.Subdistrict = "Subdistrict";
+                    a.District = "District";
+                    a.Province = "Province";
+                    a.ZipCode = "10300";
+                }
+            );
+
+            contentItem.Alter<ContactInformationPart>(
+                nameof(ContactInformationPart),
+                c =>
+                {
+                    c.PhoneNumber = "0212345678";
+                    c.EmailAddress = "user@gmail.com";
+                }
+            );
+
+            contentItem.Alter<SocialNetworkPart>(
+                nameof(SocialNetworkPart),
+                s =>
+                {
+                    s.Facebook = "https://www.facebook.com/replicationfaq";
+                }
+            );
+
+            contentItem.Alter<AutoroutePart>(
+                nameof(AutoroutePart),
+                r => r.Path = "/contact"
+            );
+
+            await _contentManager.CreateAsync(contentItem, VersionOptions.Published);
         }
 
         private void UpdateBlogPostType()
@@ -210,7 +258,7 @@ namespace ReplicationFaq.Theme
             contactUsMenuItem.DisplayText = displayText;
 
             var url = pattern.Replace(displayText.Trim(), "-").ToLower();
-            contactUsMenuItem.Alter<LinkMenuItemPart>(p => p.Url = $"~/{url}");
+            contactUsMenuItem.Alter<LinkMenuItemPart>(p => p.Url = $"/{url}");
             return contactUsMenuItem;
         }
 

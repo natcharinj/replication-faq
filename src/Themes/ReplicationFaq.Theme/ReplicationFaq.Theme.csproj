@@ -12,7 +12,7 @@
   <ItemGroup>
     <PackageReference Include="OrchardCore.Theme.Targets" Version="1.0.0" />
     <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0" />
-   <PackageReference Include="OrchardCore.Contents" Version="1.0.0" />
+    <PackageReference Include="OrchardCore.Contents" Version="1.0.0" />
     <PackageReference Include="OrchardCore.DisplayManagement" Version="1.0.0" />
     <PackageReference Include="OrchardCore.ResourceManagement" Version="1.0.0" />
     <PackageReference Include="OrchardCore.Navigation" Version="1.0.0" />
@@ -24,11 +24,10 @@
     <PackageReference Include="OrchardCore.Autoroute" Version="1.0.0" />
     <PackageReference Include="OrchardCore.Taxonomies" Version="1.0.0" />
     <PackageReference Include="OrchardCore.Search.Abstractions" Version="1.0.0" />
+  </ItemGroup>
 
-
-
-
-
+  <ItemGroup>
+    <ProjectReference Include="..\..\Modules\Codesanook.OrganizationProfile\Codesanook.OrganizationProfile.csproj" />
   </ItemGroup>
 
 </Project>

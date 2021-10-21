@@ -7,6 +7,8 @@ using OrchardCore.DisplayManagement.Manifest;
     Version = "0.0.1",
     Description = "ReplicationFaq.Theme",
     Dependencies = new[]{
-        "OrchardCore.Media.Azure.Storage"
+        // Required features 
+        "OrchardCore.Media.Azure.Storage",
+        "Codesanook.OrganizationProfile"
     }
 )]

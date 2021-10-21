@@ -1,0 +1,26 @@
+@model ShapeViewModel<SocialNetworkPart>
+<fieldset>
+  <legend>Social network</legend>
+
+  <div>
+    <label asp-for="Value.ShowSocialNetwork">
+      <input type="checkbox" asp-for="Value.ShowSocialNetwork" class="part-display-toggle">
+      @T[nameof(Model.Value.ShowSocialNetwork)]
+    </label>
+  </div>
+
+  @if (Model.Value.ShowSocialNetwork)
+  {
+    <div asp-validation-class-for="Value.Facebook" class="form-group">
+      <label asp-for="Value.Facebook">@T[nameof(Model.Value.Facebook)]</label>
+      <input asp-for="Value.Facebook" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.Facebook)]</span>
+    </div>
+
+    <div asp-validation-class-for="Value.YouTube" class="form-group">
+      <label asp-for="Value.YouTube">@T[nameof(Model.Value.YouTube)]</label>
+      <input asp-for="Value.YouTube" class="form-control" />
+      <span class="hint">@T[nameof(Model.Value.YouTube)]</span>
+    </div>
+  }
+</fieldset>

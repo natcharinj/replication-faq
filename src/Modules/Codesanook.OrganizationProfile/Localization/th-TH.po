@@ -1,0 +1,68 @@
+msgid "Address"
+msgstr "ที่อยู่"
+
+msgid "House number"
+msgstr "บ้านเลขที่"
+
+msgid "Village name"
+msgstr "หมู่บ้าน"
+
+msgid "Village number"
+msgstr "หมู่ที่"
+
+msgid "Building name"
+msgstr "อาคาร"
+
+msgid "Room number"
+msgstr "เลขที่ห้อง"
+
+msgid "Floor"
+msgstr "ชั้นที่"
+
+msgid "Lane"
+msgstr "ตรอก/ซอย"
+
+msgid "Street"
+msgstr "ถนน"
+
+msgid "Subdistrict"
+msgstr "ตำบล/แขวง"
+
+msgid "District"
+msgstr "อำเภอ/เขต"
+
+msgid "Province"
+msgstr "จังหวัด"
+
+msgid "Zip code"
+msgstr "รหัสไปรษณีย์"
+
+msgid "Phone number"
+msgstr "เบอร์โทรศัพท์"
+
+msgid "Mobile phone number"
+msgstr "เบอร์โทรศัพท์"
+
+msgid "Email address"
+msgstr "อีเมล์"
+
+msgid "Message"
+msgstr "ข้อความ"
+
+msgid "Name"
+msgstr "ชื่อ"
+
+msgid "About us"
+msgstr "เกี่ยวกับเรา"
+
+msgid "Contact us"
+msgstr "ติดต่อเรา"
+
+msgid "Please fill your contact information, message and click send button to contact us."
+msgstr "กรุณากรอกข้อมูลติดต่อและข้อความของคุณ แล้วกดส่งข้อความเพื่อติดต่อเรา"
+
+msgid "Send"
+msgstr "ส่งข้อความ"
+
+msgid "Social"
+msgstr "โซเชียลมีเดีย"

@@ -1,0 +1,17 @@
+@model ShapeViewModel<ContactInformationPart>
+
+@if (Model.Value.ShowContactInformation)
+{
+  <div class="contact-information">
+
+  <p class="text-nowrap-dx">
+    <strong>@T[Html.DisplayNameFor(m=>m.Value.PhoneNumber).ToString()] :</strong>
+    <a href="tel:@Model.Value.PhoneNumber"> @Model.Value.PhoneNumber</a>
+  </p>
+
+  <p class="text-nowrap-dx">
+    <strong>@T[Html.DisplayNameFor(m=>m.Value.EmailAddress).ToString()] :</strong>
+    <a href="mailto:@Model.Value.EmailAddress">@Model.Value.EmailAddress</a>
+  </p>
+</div>
+}
