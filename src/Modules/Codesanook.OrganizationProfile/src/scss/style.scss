@@ -1,6 +1,26 @@
-.organization-profile-content > .main-content {
-  $gap: 20px;
-  gap: $gap;
+$gap: 20px;
+.organization-profile-content {
+  > .header {
+    font-size: 24px;
+    margin: $gap 0px;
+    font-weight: bold;
+  }
+
+  > .contact-detail {
+    gap: $gap;
+
+    @media (min-width: 768px) {
+      row-gap: 50px;
+    }
+  }
+
+  > .-row-wrap {
+    flex-wrap: wrap;
+  }
+}
+
+.contact-detail {
+  display: flex;
   > * {
     width: 100%;
   }
@@ -18,17 +38,55 @@
   }
 }
 
+.contact-information {
+  > .item {
+    word-break: break-word;
+  }
+}
+
 .social-network-list {
   margin: 0;
   padding: 0;
   list-style: none;
+  display: flex;
+  gap: $gap;
+  font-size: 16px;
+  font-weight: bold;
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
 }
 
 .social-network-link {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+
   &:hover,
   &:link,
   &:active,
   &:visited {
     text-decoration: none;
+  }
+
+  > .fa-youtube,
+  > .fa-facebook {
+    font-size: 24px;
+  }
+
+  > .fa-youtube {
+    color: red;
+  }
+
+  > .fa-facebook {
+    color: blue;
+  }
+
+  @media (min-width: 768px) {
+    > .fa-youtube,
+    > .fa-facebook {
+      font-size: 30px;
+    }
   }
 }
