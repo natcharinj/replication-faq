@@ -23,6 +23,7 @@
   <style asp-name="bootstrap" at="Head"></style>
   <!-- You need spectify a version of dependent resource it it has a version -->
   <style asp-name="replication-faq-theme" at="Head"></style>
+  <style asp-name="codesanook-organization-profile" at="Head"></style>
   <script asp-name="bootstrap" at="Foot"></script>
 
   <resources type="Meta" />
@@ -71,24 +72,14 @@
       <div class="copyright-message">
         Copyright 2017 Powered by Code Love
       </div>
-      <ul class="social-network">
+      <div class="social-network">
         @* https://fontawesome.com/v5.15/icons?d=gallery&p=2 *@
-        <li class="item">
-          <a href="">
-            <i class="fab fa-facebook"></i>
-          </a>
-        </li>
-        <li  class="item">
-          <a href="">
-            <i class="fas fa-envelope"></i>
-          </a>
-        </li>
-        <li  class="item">
-          <a href="">
-            <i class="fab fa-youtube"></i>
-          </a>
-        </li>
-      </ul>
+        @{
+          // src/Modules/Codesanook.OrganizationProfile/Shapes/SocialNetworkShapeProvider.cs
+          var socialNetworkShape = await New.SocialNetwork();
+        }
+        @await DisplayAsync(socialNetworkShape)
+      </div>
     </div>
 
     <div class="nav-mobile" id="nav-mobile">
@@ -100,19 +91,10 @@
         <menu alias="alias:main-menu" cache-id="main-menu" cache-fixed-duration="00:05:00"
           cache-tag="alias:main-menu" />
         <div class="button">
-            <a class="link-button">Support</a>
+          <a class="link-button">Support</a>
         </div>
         <div class="social-network -center">
-          <div class="item">
-            <a href="http://www.facebook.com"><span><i class="fab fa-facebook"></i></span></a>
-          </div>
-          <div class="item">
-            <a href="#"><span><i class="fas fa-envelope"></i></span></a>
-          </div>
-          <div class="item">
-            <a href="#"><span><i class="fab fa-youtube"></i></span></a>
-          </div>
-          </div>
+          <!-- TODO for mobile-->
         </div>
       </div>
     </div>

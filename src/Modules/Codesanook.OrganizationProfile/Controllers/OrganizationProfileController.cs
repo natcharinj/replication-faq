@@ -35,7 +35,7 @@ namespace Codesanook.OrganizationProfile.Controllers
             IUpdateModelAccessor updateModelAccessor,
             IStringLocalizer<OrganizationProfileController> stringLocalizer,
             IContentDefinitionManager contentDefinitionManager,
-            IHtmlLocalizer<OrganizationProfileController> htmlLocalizer, 
+            IHtmlLocalizer<OrganizationProfileController> htmlLocalizer,
             INotifier notifier)
         {
             _contentItemDisplayManager = contentItemDisplayManager;
@@ -51,7 +51,11 @@ namespace Codesanook.OrganizationProfile.Controllers
         public async Task<IActionResult> Edit()
         {
             var (contentItem, _) = await GetContentItemAsync();
-            var contentItemEditorShape = await _contentItemDisplayManager.BuildEditorAsync(contentItem, _updateModelAccessor.ModelUpdater, false);
+            var contentItemEditorShape = await _contentItemDisplayManager.BuildEditorAsync(
+                contentItem,
+                _updateModelAccessor.ModelUpdater,
+                 false
+            );
             return View(contentItemEditorShape);
         }
 

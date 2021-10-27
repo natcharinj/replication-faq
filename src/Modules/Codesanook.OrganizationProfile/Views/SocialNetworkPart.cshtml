@@ -1,14 +1,26 @@
 @using System.Reflection
+@using OrchardCore.Environment.Shell.Scope
+@using OrchardCore.ResourceManagement;
+@using Microsoft.Extensions.DependencyInjection;
 @model ShapeViewModel<SocialNetworkPart>
+
+@* @{
+  var resourceManager = ShellScope.Services.GetRequiredService<IResourceManager>();
+  resourceManager
+  .RegisterResource("style", "codesanook-organization-profile")
+  .AtHead()
+  .ShouldAppendVersion(true);
+}
+ *@
 
 @functions
 {
- IReadOnlyCollection<(string Name, string Url)> GetSocialNetworks()
+  IReadOnlyCollection<(string Name, string Url)> GetSocialNetworks()
   {
     var type = typeof(SocialNetworkPart);
     var instance = Model.Value;
     var propertiesWithoutInheritedClass = type.GetProperties(
-      BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly
+    BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly
     );
 
     // Get only not-null properties with Reflection

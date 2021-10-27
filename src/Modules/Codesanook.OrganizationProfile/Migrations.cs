@@ -21,7 +21,7 @@ namespace Codesanook.OrganizationProfile
             _contentManager = contentManager;
         }
 
-        public int CreateAsync()
+        public int Create()
         {
             CreateOrganizationProfileType();
             return 1;

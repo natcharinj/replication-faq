@@ -5,7 +5,7 @@
 // MERGE
 // SYNC SERVICES
 // ALWAYS ON
-// CONTACT
+// CONTACT US
 using OrchardCore.Data.Migration;
 using OrchardCore.ContentManagement;
 using OrchardCore.Layers.Services;
@@ -69,7 +69,6 @@ namespace ReplicationFaq.Theme
 
             UpdateBlogPostType();
             await CreateOrganizationProfileAsync();
-
             return 1;
         }
 
@@ -113,7 +112,7 @@ namespace ReplicationFaq.Theme
 
             contentItem.Alter<AutoroutePart>(
                 nameof(AutoroutePart),
-                r => r.Path = "/contact"
+                r => r.Path = "/contact-us"
             );
 
             await _contentManager.CreateAsync(contentItem, VersionOptions.Published);
@@ -206,7 +205,7 @@ namespace ReplicationFaq.Theme
             var mergeMenuItem = await CreateMenuItem("Merge");
             var syncServicesMenuItem = await CreateMenuItem("Sync Services");
             var alwaysOnMenuItem = await CreateMenuItem("Always On");
-            var contactMenuItem = await CreateMenuItem("Contact");
+            var contactMenuItem = await CreateMenuItem("Contact us");
 
             //await _contentManager.CreateAsync(contactUsMenuItem, VersionOptions.Published);
             // C:\projects\OrchardCore\src\OrchardCore.Modules\OrchardCore.Alias\Razor\AliasPartRazorHelperExtensions.cs

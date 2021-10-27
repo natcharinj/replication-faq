@@ -12,9 +12,12 @@ using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.ContentManagement.Handlers;
 using OrchardCore.Data.Migration;
+using OrchardCore.DisplayManagement.Descriptors;
 using OrchardCore.Modules;
 using OrchardCore.Mvc.Core.Utilities;
 using OrchardCore.Navigation;
+using Codesanook.OrganizationProfile.Shapes;
+using OrchardCore.ResourceManagement;
 
 namespace Codesanook.OrganizationProfile
 {
@@ -28,10 +31,12 @@ namespace Codesanook.OrganizationProfile
             services.AddContentPart<AddressPart>().UseDisplayDriver<AddressPartDisplayDriver>();
             services.AddContentPart<ContactInformationPart>().UseDisplayDriver<ContactInformationPartDisplayDriver>();
             services.AddContentPart<SocialNetworkPart>().UseDisplayDriver<SocialNetworkPartDisplayDriver>();
+            services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
 
             services.AddScoped<IDataMigration, Migrations>();
             services.AddScoped<INavigationProvider, AdminMenu>();
             services.AddScoped<IContentDisplayHandler, ContentDisplayHandler>();
+            services.AddShapeAttributes<SocialNetworkShapeProvider>();
         }
 
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
