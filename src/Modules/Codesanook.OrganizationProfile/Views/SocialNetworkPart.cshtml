@@ -18,7 +18,7 @@
   IReadOnlyCollection<(string Name, string Url)> GetSocialNetworks()
   {
     var type = typeof(SocialNetworkPart);
-    var instance = Model.Value;
+    var socialNetworkPart = Model.Value;
     var propertiesWithoutInheritedClass = type.GetProperties(
     BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly
     );
@@ -26,8 +26,8 @@
     // Get only not-null properties with Reflection
     var socialNetworks =
     from p in propertiesWithoutInheritedClass
-    where !string.IsNullOrWhiteSpace(p.GetValue(instance) as string)
-    select (Name: p.Name, Url: p.GetValue(instance).ToString());
+    where !string.IsNullOrWhiteSpace(p.GetValue(socialNetworkPart) as string)
+    select (Name: p.Name, Url: p.GetValue(socialNetworkPart).ToString());
 
     return socialNetworks.ToArray();
   }

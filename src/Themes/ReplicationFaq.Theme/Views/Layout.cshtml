@@ -93,9 +93,10 @@
         <div class="button">
           <a class="link-button">Support</a>
         </div>
-        <div class="social-network -center">
-          <!-- TODO for mobile-->
-        </div>
+        @{
+          var socialNetworkShapeMobile = await New.SocialNetwork();
+        }
+        @await DisplayAsync(socialNetworkShapeMobile)
       </div>
     </div>
 
