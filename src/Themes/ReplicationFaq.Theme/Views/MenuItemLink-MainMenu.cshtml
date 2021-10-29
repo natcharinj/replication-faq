@@ -3,6 +3,19 @@
     var linkMenuItemPart = contentItem.As<LinkMenuItemPart>();
 }
 
-<a class="link-button" href="@(linkMenuItemPart.Url ?? "#")">
+@functions {
+  string ResolveUrl(string url)
+  {
+    if(string.IsNullOrWhiteSpace(url)){
+      return "#";
+    }
+
+    return url.StartsWith("/", StringComparison.Ordinal) ? Url.Content($"~{url}")
+      : url.StartsWith("~/", StringComparison.Ordinal) ? Url.Content(url)
+      : url;
+  }
+}
+
+<a class="link-button" href="@ResolveUrl(linkMenuItemPart.Url)">
   @contentItem.DisplayText
 </a>

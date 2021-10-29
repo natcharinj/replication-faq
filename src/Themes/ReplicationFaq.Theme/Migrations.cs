@@ -257,7 +257,7 @@ namespace ReplicationFaq.Theme
             contactUsMenuItem.DisplayText = displayText;
 
             var url = pattern.Replace(displayText.Trim(), "-").ToLower();
-            contactUsMenuItem.Alter<LinkMenuItemPart>(p => p.Url = $"/{url}");
+            contactUsMenuItem.Alter<LinkMenuItemPart>(p => p.Url = $"~/{url}");
             return contactUsMenuItem;
         }
 
