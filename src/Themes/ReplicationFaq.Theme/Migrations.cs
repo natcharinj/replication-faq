@@ -1,4 +1,4 @@
-// DISTRIBUTOR
+// SETUP
 // SNAPSHOT
 // TRANSACTIONAL
 // PEER TO PEER
@@ -23,6 +23,10 @@ using OrchardCore.ContentManagement.Metadata.Settings;
 using ReplicationFaq.Theme.Models;
 using OrchardCore.Autoroute.Models;
 using Codesanook.OrganizationProfile.Models;
+using OrchardCore.ContentManagement.Records;
+using OrchardCore.Taxonomies.Models;
+using OrchardCore.Title.Models;
+using OrchardCore.ContentFields.Fields;
 
 namespace ReplicationFaq.Theme
 {
@@ -68,6 +72,10 @@ namespace ReplicationFaq.Theme
             await CreateHomeBannerWidgetAsync();
 
             UpdateBlogPostType();
+
+            await RemoveExistingBlogPost();
+            await CreateBlogPostCategoriesAsync();
+
             await CreateOrganizationProfileAsync();
             return 1;
         }
@@ -106,7 +114,8 @@ namespace ReplicationFaq.Theme
                 nameof(SocialNetworkPart),
                 s =>
                 {
-                    s.Facebook = "https://www.facebook.com/replicationfaq";
+                    s.Facebook = "https://www.facebook.com/Replication-FAQ-105193241951452";
+                    s.YouTube = "https://www.youtube.com/channel/UC5bQruOk_lEYkgajAB1CX-A";
                 }
             );
 
@@ -198,13 +207,13 @@ namespace ReplicationFaq.Theme
             // await _contentManager.CreateAsync(aboutUsMenuItem, VersionOptions.Published);
 
             // Create contact us menu item
-            var distributorMenuItem = await CreateMenuItem("Distributor");
-            var SnapshotMenuItem = await CreateMenuItem("Snapshot");
-            var transactionalMenuItem = await CreateMenuItem("Transactional");
-            var peerToPeerMenuItem = await CreateMenuItem("Peer to Peer");
-            var mergeMenuItem = await CreateMenuItem("Merge");
-            var syncServicesMenuItem = await CreateMenuItem("Sync Services");
-            var alwaysOnMenuItem = await CreateMenuItem("Always On");
+            var distributorMenuItem = await CreateMenuItem("Setup", "categories");
+            var SnapshotMenuItem = await CreateMenuItem("Snapshot", "categories");
+            var transactionalMenuItem = await CreateMenuItem("Transactional", "categories");
+            var peerToPeerMenuItem = await CreateMenuItem("Peer to Peer", "categories");
+            var mergeMenuItem = await CreateMenuItem("Merge", "categories");
+            var syncServicesMenuItem = await CreateMenuItem("Sync Services", "categories");
+            var alwaysOnMenuItem = await CreateMenuItem("Always On", "categories");
             var contactMenuItem = await CreateMenuItem("Contact us");
 
             //await _contentManager.CreateAsync(contactUsMenuItem, VersionOptions.Published);
@@ -251,13 +260,15 @@ namespace ReplicationFaq.Theme
             await _contentManager.UpdateAsync(menuContentItem);
         }
 
-        private async Task<ContentItem> CreateMenuItem(string displayText)
+        private async Task<ContentItem> CreateMenuItem(string displayText, string basedUrl = null)
         {
             var contactUsMenuItem = await _contentManager.NewAsync("LinkMenuItem");
             contactUsMenuItem.DisplayText = displayText;
 
-            var url = pattern.Replace(displayText.Trim(), "-").ToLower();
-            contactUsMenuItem.Alter<LinkMenuItemPart>(p => p.Url = $"~/{url}");
+            var childUrl = pattern.Replace(displayText.Trim(), "-").ToLower();
+            var urlSegments = new[] { basedUrl, childUrl }.Where(url => !string.IsNullOrEmpty(url));
+            var resolvedUrl = $"~/{string.Join('/', urlSegments)}";
+            contactUsMenuItem.Alter<LinkMenuItemPart>(p => p.Url = resolvedUrl);
             return contactUsMenuItem;
         }
 
@@ -309,6 +320,72 @@ namespace ReplicationFaq.Theme
             // Attach Layer Meta data to a widget content item.
             contentItem.Weld(layerMetaData);
             await _contentManager.CreateAsync(contentItem, VersionOptions.Published);
+        }
+
+        public async Task RemoveExistingBlogPost()
+        {
+            var existingBlogPostContentItems = await _session
+                .Query<ContentItem, ContentItemIndex>(q => q.ContentType == "BlogPost")
+                .ListAsync();
+            foreach (var item in existingBlogPostContentItems)
+            {
+                await _contentManager.RemoveAsync(item);
+            }
+        }
+
+        public async Task CreateBlogPostCategoriesAsync()
+        {
+            var taxonomyContentItem = await _session
+                .Query<ContentItem, ContentItemIndex>(q => q.ContentType == "Taxonomy")
+                .Where(i => i.DisplayText == "Categories")
+                .FirstOrDefaultAsync();
+
+            taxonomyContentItem.As<TaxonomyPart>().Terms.RemoveAll(_ => true);
+
+            var existingCategoryItems = await _session
+                .Query<ContentItem, ContentItemIndex>(q => q.ContentType == "Category")
+                .ListAsync();
+
+            foreach (var item in existingCategoryItems)
+            {
+                await _contentManager.RemoveAsync(item);
+            }
+
+            var createCategoryTasks = new[] {
+                    "Setup", "Snapshot", "Transactional", "Peer to Peer", "Merge", "Sync Services", "Always On"
+                }
+                .Select(c => CreateBlogPostCategory(c, taxonomyContentItem));
+            var categories = await Task.WhenAll(createCategoryTasks);
+
+            taxonomyContentItem.Alter<TaxonomyPart>(part => part.Terms.AddRange(categories));
+            _session.Save(taxonomyContentItem);
+        }
+
+        private async Task<ContentItem> CreateBlogPostCategory(string title, ContentItem taxonomyContentItem)
+        {
+            var categoryContentItem = await _contentManager.NewAsync("Category");
+
+            // Attach TermPart dynamically
+            categoryContentItem.Weld<TermPart>();
+            categoryContentItem.Alter<TermPart>(t => t.TaxonomyContentItemId = taxonomyContentItem.ContentItemId);
+
+            // Alter other parts
+            categoryContentItem.DisplayText = title;
+            categoryContentItem.Alter<TitlePart>(t => t.Title = title);
+
+            var url = $"{pattern.Replace(title.Trim(), "-").ToLower()}";
+            categoryContentItem.Alter<AutoroutePart>(t => t.Path = url);
+            //categoryContentItem.Content.Category.Icon.Text = "fas fa-globe-americas";
+
+            // Fields are attached to a part which has same name as type
+            categoryContentItem.Alter<ContentPart>("Category", p =>
+            {
+                p.Alter<TextField>("Icon", f =>
+                {
+                    f.Text = "fas fa-globe-americas";
+                });
+            });
+            return categoryContentItem;
         }
     }
 }

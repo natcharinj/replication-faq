@@ -47,13 +47,13 @@ namespace ReplicationFaq.Theme.Drivers
             var urlHelper = _urlHelperFactory.GetUrlHelper(actionContext);
             var blogPostType = _contentDefinitionManager.GetTypeDefinition("BlogPost");
 
-            var typePart = blogPostType.Parts.FirstOrDefault(x => string.Equals(x.Name, blogPostType.Name, StringComparison.OrdinalIgnoreCase));
-            var categoryField = typePart.PartDefinition.Fields.Single(f => f.Name == "Category");
+            var blogPortPart = blogPostType.Parts.FirstOrDefault(x => string.Equals(x.Name, blogPostType.Name, StringComparison.OrdinalIgnoreCase));
+            var categoryField = blogPortPart.PartDefinition.Fields.Single(f => f.Name == "Category");
             var settings = categoryField.GetSettings<TaxonomyFieldSettings>();
             var taxonomyContentItem = await _contentManager.GetAsync(settings.TaxonomyContentItemId, VersionOptions.Latest);
 
-            var termes = taxonomyContentItem.As<TaxonomyPart>().Terms;
-            var termTasks = termes.Select(async t =>
+            var terms = taxonomyContentItem.As<TaxonomyPart>().Terms;
+            var termTasks = terms.Select(async t =>
             {
                 var autoroutePart = t.As<AutoroutePart>();
                 var titlepart = t.As<TitlePart>();

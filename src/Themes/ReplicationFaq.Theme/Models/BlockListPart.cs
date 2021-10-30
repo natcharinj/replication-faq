@@ -6,7 +6,6 @@ namespace ReplicationFaq.Theme.Models
     public class BlockListPart : ContentPart
     {
         public IReadOnlyCollection<BlockListItem> Items { get; set; }
-
     }
 
     public class BlockListItem
