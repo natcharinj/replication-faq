@@ -27,6 +27,7 @@ using OrchardCore.ContentManagement.Records;
 using OrchardCore.Taxonomies.Models;
 using OrchardCore.Title.Models;
 using OrchardCore.ContentFields.Fields;
+using OrchardCore.Settings;
 
 namespace ReplicationFaq.Theme
 {
@@ -41,6 +42,7 @@ namespace ReplicationFaq.Theme
         private readonly IHtmlLocalizer<Migrations> H;
         private static readonly Regex pattern = new Regex(@"\s+", RegexOptions.Compiled);
         private readonly IContentDefinitionManager _contentDefinitionManager;
+        private readonly ISiteService _siteService;
 
         public Migrations(
             INotifier notifier,
@@ -49,7 +51,8 @@ namespace ReplicationFaq.Theme
             IContentManager contentManager,
             IContentHandleManager contentHandleManager,
             ISession session,
-            IContentDefinitionManager contentDefinitionManager
+            IContentDefinitionManager contentDefinitionManager,
+            ISiteService siteService
         )
         {
             _contentManager = contentManager;
@@ -59,6 +62,7 @@ namespace ReplicationFaq.Theme
             H = localizer;
             _conditionIdGenerator = conditionIdGenerator;
             _contentDefinitionManager = contentDefinitionManager;
+            _siteService = siteService;
         }
 
         public async Task<int> CreateAsync()
