@@ -69,19 +69,32 @@ namespace ReplicationFaq.Theme
         {
             await CreateMenuAsync();
 
-            CreateBlockListPart();
-            await CreateBlockListWidgetAsync();
-
+            // Create widgets
             CreateHomeBannerPart();
             await CreateHomeBannerWidgetAsync();
 
-            UpdateBlogPostType();
+            CreateRecentBlogPostsPart();
+            await CreateRecentBlogPostsWidget();
 
+            CreateBlockListPart();
+            await CreateBlockListWidgetAsync();
+
+            UpdateBlogPostType();
             await RemoveExistingBlogPost();
             await CreateBlogPostCategoriesAsync();
-
             await CreateOrganizationProfileAsync();
+
             return 1;
+        }
+
+        private void CreateRecentBlogPostsPart()
+        {
+            _contentDefinitionManager.AlterPartDefinition(
+                nameof(RecentBlogPostsPart),
+                part => part
+                    .Attachable(true)
+                    .WithDescription("Provide a recent blog posts part for a content item.")
+            );
         }
 
         private async Task CreateOrganizationProfileAsync()
@@ -177,6 +190,7 @@ namespace ReplicationFaq.Theme
             // Create a new content item, not save to database yet.
             var contentItem = await _contentManager.NewAsync(widgetName);
             contentItem.DisplayText = widgetName;
+
             // Only using Weld that creates actual part json data in a database
             contentItem.Weld<HomeBannerPart>(new HomeBannerPart());
 
@@ -310,7 +324,6 @@ namespace ReplicationFaq.Theme
             var contentItem = await _contentManager.NewAsync(widgetName);
             contentItem.DisplayText = widgetName;
             contentItem.Weld<BlockListPart>(new BlockListPart());
-            //contentItem.Alter<BlockListPart>(p => p.Names = new[] { "test" });
 
             //var layerMetaData = contentItem.As<LayerMetadata>();
             var layerMetaData = new LayerMetadata()
@@ -318,7 +331,7 @@ namespace ReplicationFaq.Theme
                 RenderTitle = false,
                 Zone = "Content", //=> BeforeContent
                 Layer = "Homepage",
-                Position = 1
+                Position = 2
             };
 
             // Attach Layer Meta data to a widget content item.
@@ -390,6 +403,36 @@ namespace ReplicationFaq.Theme
                 });
             });
             return categoryContentItem;
+        }
+
+        private async Task CreateRecentBlogPostsWidget()
+        {
+            const string widgetName = "RecentBlogPostsWidget";
+            _contentDefinitionManager.AlterTypeDefinition(
+                widgetName,
+                type => type
+                    .WithPart(nameof(RecentBlogPostsPart))
+                    .Stereotype("Widget")
+                    .Versionable(false) // no version
+            );
+
+            // Create a new content item, not save to database yet.
+            var contentItem = await _contentManager.NewAsync(widgetName);
+            contentItem.DisplayText = widgetName;
+            contentItem.Alter<RecentBlogPostsPart>(part => part.Count = 5);
+
+            // Show only on home page
+            var layerMetaData = new LayerMetadata()
+            {
+                RenderTitle = false,
+                Zone = "Content",
+                Layer = "Homepage",
+                Position = 1
+            };
+
+            // Attach a layer Meta data to a widget content item.
+            contentItem.Weld(layerMetaData);
+            await _contentManager.CreateAsync(contentItem, VersionOptions.Published);
         }
     }
 }

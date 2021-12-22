@@ -22,6 +22,7 @@ namespace ReplicationFaq.Theme
 
             services.AddContentPart<BlockListPart>().UseDisplayDriver<BlockListPartDisplayDriver>();
             services.AddContentPart<HomeBannerPart>().UseDisplayDriver<HomeBannerPartDisplayDriver>();
+            services.AddContentPart<RecentBlogPostsPart>().UseDisplayDriver<RecentBlogPostsPartDisplayDriver>();
 
             services.AddScoped<IShapeTableProvider, BlogShapeProvider>();
         }
