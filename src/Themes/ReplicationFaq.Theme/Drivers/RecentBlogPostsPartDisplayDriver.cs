@@ -47,6 +47,7 @@ namespace ReplicationFaq.Theme.Drivers
 
         public override async Task<IDisplayResult> DisplayAsync(RecentBlogPostsPart part, BuildPartDisplayContext context)
         {
+            part.MaxResultCount = 5;
             var blogPostQuery = _session
                 .Query<ContentItem>()
                 .With<ContentItemIndex>(q => q.ContentType == "BlogPost" && q.Published && q.Latest)
@@ -54,7 +55,7 @@ namespace ReplicationFaq.Theme.Drivers
 
             var totalBlogPostCount = await blogPostQuery.CountAsync();
             var blogPosts = await blogPostQuery
-                .Take(part.Count)
+                .Take(part.MaxResultCount)
                 .ListAsync();
 
             var shapeTasks = blogPosts.Select(
@@ -68,7 +69,7 @@ namespace ReplicationFaq.Theme.Drivers
                 await listShape.AddAsync(shape); // Defined in src/OrchardCore/OrchardCore.DisplayManagement/Shapes/Shape.cs
             }
 
-            var viewModel = new RecentBlogPostsViewModel() { ListShape = listShape, ShowViewMore = totalBlogPostCount > part.Count };
+            var viewModel = new RecentBlogPostsViewModel() { ListShape = listShape, ShowViewMore = totalBlogPostCount > part.MaxResultCount };
             return View("RecentBlogPostsPart", viewModel).Location("Detail", "Content:0");
         }
     }

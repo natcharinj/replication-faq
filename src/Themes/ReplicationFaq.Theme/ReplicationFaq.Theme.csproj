@@ -25,6 +25,9 @@
     <PackageReference Include="OrchardCore.Taxonomies" Version="1.0.0" />
     <PackageReference Include="OrchardCore.Search.Abstractions" Version="1.0.0" />
     <PackageReference Include="OrchardCore.ContentFields" Version="1.0.0" />
+    <PackageReference Include="OrchardCore.Markdown" Version="1.0.0" />
+
+
 
   </ItemGroup>
 

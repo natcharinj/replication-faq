@@ -1,20 +1,21 @@
-
 @using OrchardCore.Mvc.Utilities;
+@using OrchardCore.Autoroute.Models
+
 @{
-  var contentTypeClassName = ((string)Model.ContentItem.ContentType).HtmlClassify();
+  // Model is a zone object.
+  var contentItem = Model.ContentItem as ContentItem;
+  var contentTypeClassName = ((string)contentItem.ContentType).HtmlClassify();
+  var autoRoutePath = contentItem.As<AutoroutePart>();
 }
-<article class="content-item content content-@contentTypeClassName">
-  <header>
-    @await DisplayAsync(Model.Header)
-  </header>
 
-  @await DisplayAsync(Model.Content)
-
-  @if (Model.Footer != null)
-  {
-    <footer>
-      @await DisplayAsync(Model.Footer)
-    </footer>
-  }
-
-</article>
+<a class="@contentTypeClassName-content -summary card-box -grow" href="@autoRoutePath.Path" title="@contentItem.DisplayText">
+  <div>Content-BlogPost.Summary</div>
+  <div class="secondary-content">
+    @* local zone insize content zones (Header, Meta, Content)*@
+    <div class="meta-content">@await DisplayAsync(Model.Meta)</div>
+    <div class="header-content">@await DisplayAsync(Model.Header)</div>
+  </div>
+  <div class="main-content">
+    @await DisplayAsync(Model.Content)
+  </div>
+</a>

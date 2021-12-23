@@ -1,0 +1,13 @@
+@using OrchardCore.ContentManagement
+@model ShapeViewModel<ContentItem>
+@{
+var contentItem = Model.Value;
+}
+
+<div class="author">
+  By: @contentItem.Author
+</div>
+
+<div class="date">
+  When: @contentItem.CreatedUtc
+</div>

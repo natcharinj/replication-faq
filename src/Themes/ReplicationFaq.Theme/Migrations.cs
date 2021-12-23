@@ -148,7 +148,7 @@ namespace ReplicationFaq.Theme
         {
             var urlPattern = new[] {
                 "{% assign category = ContentItem.Content.BlogPost.Category | taxonomy_terms | first %}",
-                "{{ 'categories' }}/{{ category | display_text | slugify }}/{{ ContentItem | display_text | slugify }}"
+                "/{{ 'categories' }}/{{ category | display_text | slugify }}/{{ ContentItem | display_text | slugify }}"
             };
 
             _contentDefinitionManager.AlterTypeDefinition(
@@ -419,7 +419,7 @@ namespace ReplicationFaq.Theme
             // Create a new content item, not save to database yet.
             var contentItem = await _contentManager.NewAsync(widgetName);
             contentItem.DisplayText = widgetName;
-            contentItem.Alter<RecentBlogPostsPart>(part => part.Count = 5);
+            contentItem.Alter<RecentBlogPostsPart>(part => part.MaxResultCount = 5);
 
             // Show only on home page
             var layerMetaData = new LayerMetadata()

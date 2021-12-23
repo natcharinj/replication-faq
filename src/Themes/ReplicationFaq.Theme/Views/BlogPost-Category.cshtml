@@ -1,0 +1,19 @@
+@model OrchardCore.Taxonomies.ViewModels.DisplayTaxonomyFieldViewModel
+@using OrchardCore.Mvc.Utilities;
+
+@{
+  // [PartType]_[DisplayType]__[FieldName]__[FieldType]_[DisplalyMode]
+  // Fileds are attached to a part witch has the same name as type
+
+  var name = (Model.PartFieldDefinition.PartDefinition.Name + "-" + Model.PartFieldDefinition.Name).HtmlClassify();
+}
+
+<h4>BlogPost-Category</h4>
+
+<div class="field field-type-taxonomyfield field-name-@name">
+  @foreach (var contentItemId in Model.TermContentItemIds)
+  {
+    var term = await Orchard.GetTaxonomyTermAsync(Model.TaxonomyContentItemId, contentItemId);
+    <span class="taxonomy-term">Term: @term</span>
+  }
+</div>

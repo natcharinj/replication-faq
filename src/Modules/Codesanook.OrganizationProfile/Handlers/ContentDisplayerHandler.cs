@@ -1,10 +1,7 @@
 using System.Threading.Tasks;
-using Codesanook.OrganizationProfile.Models;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.DisplayManagement.Handlers;
-using OrchardCore.DisplayManagement.Shapes;
-using OrchardCore.DisplayManagement.Zones;
 using OrchardCore.ResourceManagement;
 
 namespace Codesanook.OrganizationProfile.Handlers
