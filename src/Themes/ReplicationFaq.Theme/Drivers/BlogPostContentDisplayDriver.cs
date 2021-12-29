@@ -15,7 +15,9 @@ namespace ReplicationFaq.Theme.Drivers
                 return null;
             }
 
-            return View("BlogPostMeta", contentItem).Location("Detail", "Meta:1");
+            return View("BlogPostMeta", contentItem)
+                .Location("Detail", "Meta:1")
+                .Location("Summary","Meta:1");
         }
 
     }

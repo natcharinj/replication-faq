@@ -3,7 +3,7 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  padding: 40px 0;
+  padding: 20px 0;
   gap: $widget-item-gap;
 
   @media (min-width: 768px) {
@@ -15,7 +15,7 @@
 }
 
 .block-list-item {
-  height: 70px;
+  height: 40px;
   flex-basis: 100%;
   display: flex;
   justify-content: center;
@@ -30,6 +30,6 @@
   &:hover { color: #f2f2f2; background-color: #02b3e4; }
 
   @media (min-width: 768px) {
-    height: 100px;
+    height: 60px;
   }
 }

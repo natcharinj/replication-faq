@@ -8,14 +8,16 @@
   var autoRoutePath = contentItem.As<AutoroutePart>();
 }
 
-<a class="@contentTypeClassName-content -summary card-box -grow" href="@autoRoutePath.Path" title="@contentItem.DisplayText">
-  <div>Content-BlogPost.Summary</div>
-  <div class="secondary-content">
-    @* local zone insize content zones (Header, Meta, Content)*@
-    <div class="meta-content">@await DisplayAsync(Model.Meta)</div>
-    <div class="header-content">@await DisplayAsync(Model.Header)</div>
+<div class="@contentTypeClassName-content -summary card-box -grow">
+  <div class="secondary-content content-item">
+    <div class="header-content -unsetMargin">
+      <a class="@contentTypeClassName-content -summary link-button" href="@autoRoutePath.Path" title="@contentItem.DisplayText">
+        @await DisplayAsync(Model.Header)
+      </a>
+    </div>
+    <div class="meta-content -unsetMargin">@await DisplayAsync(Model.Meta)</div>
   </div>
-  <div class="main-content">
+  <div class="main-@contentTypeClassName-content">
     @await DisplayAsync(Model.Content)
   </div>
-</a>
+</div>
