@@ -1,4 +1,13 @@
 @using OrchardCore.Mvc.Utilities
-@model OrchardCore.Markdown.ViewModels.MarkdownBodyPartViewModel
+@using OrchardCore.Autoroute.Models
 
-@Html.Raw(Model.Html.RemoveTags(true).Ellipsize(200)) Read more
+@model OrchardCore.Markdown.ViewModels.MarkdownBodyPartViewModel
+@{
+  var contentItem = Model.ContentItem as ContentItem;
+  var autoRoutePath = contentItem.As<AutoroutePart>();
+}
+
+<div class="content-readmore">
+  <div class="-textBold">@Html.Raw(Model.Html.RemoveTags(true).Ellipsize(200))</div>
+  <div><a href="@autoRoutePath.Path">Read more...</a></div>
+</div>

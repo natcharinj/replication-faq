@@ -11,12 +11,11 @@
   var name = (Model.PartFieldDefinition.PartDefinition.Name + "-" + Model.PartFieldDefinition.Name).HtmlClassify();
 }
 
-<h4>BlogPost-Tags-TaxonomyField-Tags.Display</h4>
-
 <div class="field field-type-taxonomyfield field-name-@name">
+  <span>Tag: </span>
   @foreach (var contentItemId in Model.TermContentItemIds)
   {
     var term = await Orchard.GetTaxonomyTermAsync(Model.TaxonomyContentItemId, contentItemId);
-    <span class="taxonomy-term">Term: @term</span>
+    <span class="taxonomy-term -grow"><a href="/tags/@term" class="link-button" title="@term">@term</a></span>
   }
 </div>

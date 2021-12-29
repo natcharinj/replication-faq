@@ -15,6 +15,7 @@ ul {
 @import "./main-footer.scss";
 @import "./content-list.scss";
 @import "./content-detail.scss";
+@import "./blogpost.scss";
 
 @font-face {
   font-family: "Open Sans";
@@ -54,6 +55,10 @@ a,
 a:hover {
   color: inherit;
   cursor: pointer;
+}
+
+._list-unstyled {
+  list-style: none;
 }
 
 @media (max-width: 1060px) {
